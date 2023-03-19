@@ -22,7 +22,6 @@ jobs:
       - uses: rickstaa/action-create-tag@v1
         if: steps.check.outputs.changed == 'true'
         with:
-          github_token: ${{ secrets.PAT }}
           tag: 'v${{ steps.check.outputs.version }}'
 
       - name: Create Release
