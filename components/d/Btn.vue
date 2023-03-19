@@ -13,7 +13,7 @@
 <script lang="ts">
 import FocusHighlight, {
   HighlightVariant
-} from '~~/components/d/wrap/FocusHighlight.vue'
+} from './wrap/FocusHighlight.vue'
 
 export default defineComponent({
   name: 'DButton',

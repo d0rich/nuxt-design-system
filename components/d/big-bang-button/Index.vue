@@ -23,7 +23,7 @@ export default defineComponent({
   emits: ['click'],
   setup(props, ctx) {
     const NuxtLink = resolveComponent('NuxtLink')
-    const animationText = useBigBangButtonAnimationText()
+    const { text: animationText } = useDBigBangButtonUtils()
     return {
       currentTag: computed(() => {
         return props.to ? NuxtLink : props.tag

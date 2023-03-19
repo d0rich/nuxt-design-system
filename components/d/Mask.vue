@@ -9,18 +9,18 @@
 </template>
 
 <script lang="ts">
-import spider from '~~/assets/img/masks/spider.webp'
-import spiderColor from '~~/assets/img/masks/spider-color.webp'
-import spiderOutline from '~~/assets/img/masks/spider-outline.webp'
-import spiderOutlineColor from '~~/assets/img/masks/spider-outline-color.webp'
-import owl from '~~/assets/img/masks/owl.webp'
-import owlColor from '~~/assets/img/masks/owl-color.webp'
-import owlOutline from '~~/assets/img/masks/owl-outline.webp'
-import owlOutlineColor from '~~/assets/img/masks/owl-outline-color.webp'
-import wolf from '~~/assets/img/masks/wolf.webp'
-import wolfColor from '~~/assets/img/masks/wolf-color.webp'
-import wolfOutline from '~~/assets/img/masks/wolf-outline.webp'
-import wolfOutlineColor from '~~/assets/img/masks/wolf-outline-color.webp'
+import spider from '../../assets/img/masks/spider.webp'
+import spiderColor from '../../assets/img/masks/spider-color.webp'
+import spiderOutline from '../../assets/img/masks/spider-outline.webp'
+import spiderOutlineColor from '../../assets/img/masks/spider-outline-color.webp'
+import owl from '../../assets/img/masks/owl.webp'
+import owlColor from '../../assets/img/masks/owl-color.webp'
+import owlOutline from '../../assets/img/masks/owl-outline.webp'
+import owlOutlineColor from '../../assets/img/masks/owl-outline-color.webp'
+import wolf from '../../assets/img/masks/wolf.webp'
+import wolfColor from '../../assets/img/masks/wolf-color.webp'
+import wolfOutline from '../../assets/img/masks/wolf-outline.webp'
+import wolfOutlineColor from '../../assets/img/masks/wolf-outline-color.webp'
 
 export type MaskType = 'wolf' | 'owl' | 'spider'
 

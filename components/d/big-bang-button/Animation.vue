@@ -31,7 +31,7 @@ const paths = {
 
 export default defineComponent({
   setup() {
-    const text = useBigBangButtonAnimationText()
+    const { text } = useDBigBangButtonUtils()
     const symbols = computed(() => text.value.split(''))
     let clearTask: NodeJS.Timeout
     watch(text, (val) => {

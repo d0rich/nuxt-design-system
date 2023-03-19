@@ -41,7 +41,7 @@ export default defineComponent({
 }
 
 .card--homepage-story .card__bg {
-  background: url('~/assets/img/character/idle-shape-yellow-400.svg') fixed;
+  background: url('../../../assets/img/character/idle-shape-yellow-400.svg') fixed;
   background-position-x: calc(60vw - 50vh);
   background-position-y: -25vh;
   background-size: auto 150vh;
@@ -50,7 +50,7 @@ export default defineComponent({
 }
 
 .card--homepage-skills .card__bg {
-  background: url('~/assets/img/character/action-shape-cyan-400.svg') fixed;
+  background: url('../../../assets/img/character/action-shape-cyan-400.svg') fixed;
   background-position: center;
   background-size: auto 100vh;
   background-repeat: no-repeat;

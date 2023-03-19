@@ -14,6 +14,8 @@ const props = defineProps({
   }
 })
 
+const {getLinkToPaginatedPage} = useDPaginationUtils()
+
 function getLinkToPage(page: number) {
   return getLinkToPaginatedPage(props.baseLink, page)
 }
