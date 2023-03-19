@@ -1,5 +1,8 @@
 {
   "name": "@d0rich/nuxt-design-system",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./nuxt.config.ts",
   "scripts": {
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
