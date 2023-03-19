@@ -1,0 +1,17 @@
+node_modules
+.env
+.dockerignore
+Dockerfile
+.github
+
+*.db
+*.db-shm
+*.db-wal
+.eslintrc
+.prettierrc
+.prettierignore
+.prettierrc.json
+.editorconfig
+tsconfig.json
+.nuxt
+.vscode
