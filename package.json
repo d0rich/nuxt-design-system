@@ -1,7 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
   "version": "0.1.0",
-  "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
     "lint:ts": "nuxi typecheck",
@@ -27,7 +26,7 @@
   "dependencies": {
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/google-fonts": "^3.0.0-1",
-    "@nuxtjs/tailwindcss": "^6.2.0",
+    "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
     "gsap": "^3.11.4",
     "nuxt-icon": "^0.3.2"
