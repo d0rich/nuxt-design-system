@@ -11,9 +11,7 @@
 </template>
 
 <script lang="ts">
-import FocusHighlight, {
-  HighlightVariant
-} from './wrap/FocusHighlight.vue'
+import FocusHighlight, { HighlightVariant } from './wrap/FocusHighlight.vue'
 
 export default defineComponent({
   name: 'DButton',
