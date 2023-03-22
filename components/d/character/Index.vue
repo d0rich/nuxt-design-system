@@ -1,10 +1,31 @@
 <template>
   <div>
-    <Transition name="character" mode="out-in">
-      <img v-if="pose === 'idle'" :src="getAsset('idle')" />
-      <img v-else-if="pose === 'action'" :src="getAsset('action')" />
-      <img v-else-if="pose === 'profi'" :src="getAsset('profi')" />
-    </Transition>
+    <div class="relative isolate">
+      <svg viewBox="0 0 2049 2048" xmlns="http://www.w3.org/2000/svg">
+        <def>
+          <DCharacterShapeIdle
+            id="shape-idle"
+            transform="translate(-18000 0)"
+            class="fill-white"
+          />
+          <DCharacterShapeAction
+            id="shape-action"
+            transform="translate(-18000 -2000)"
+            class="fill-white"
+          />
+          <DCharacterShapeProfi
+            id="shape-profi"
+            transform="translate(-18000 -4500)"
+            class="fill-white"
+          />
+        </def>
+      </svg>
+      <Transition name="character" mode="out-in">
+        <img v-if="pose === 'idle'" :src="getAsset('idle')" />
+        <img v-else-if="pose === 'action'" :src="getAsset('action')" />
+        <img v-else-if="pose === 'profi'" :src="getAsset('profi')" />
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -63,7 +84,7 @@ export default defineComponent({
 
 <style scoped>
 img {
-  @apply w-full h-auto;
+  @apply w-full h-auto absolute inset-0 z-10;
 }
 
 .character-enter-active,
