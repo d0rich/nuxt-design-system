@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CharacterPose } from './components/d/Character.vue'
+import { CharacterPose } from './components/d/character/Index.vue'
 import { ActionListItem } from './components/d/actions/List.vue'
 
 const pose = ref<CharacterPose>('idle')

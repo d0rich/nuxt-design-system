@@ -9,18 +9,18 @@
 </template>
 
 <script lang="ts">
-import idle from '../../assets/img/character/idle.webp'
-import idleColor from '../../assets/img/character/idle-color.webp'
-import idleOutline from '../../assets/img/character/idle-outline.webp'
-import idleOutlineColor from '../../assets/img/character/idle-outline-color.webp'
-import action from '../../assets/img/character/action.webp'
-import actionColor from '../../assets/img/character/action-color.webp'
-import actionOutline from '../../assets/img/character/action-outline.webp'
-import actionOutlineColor from '../../assets/img/character/action-outline-color.webp'
-import profi from '../../assets/img/character/profi.webp'
-import profiColor from '../../assets/img/character/profi-color.webp'
-import profiOutline from '../../assets/img/character/profi-outline.webp'
-import profiOutlineColor from '../../assets/img/character/profi-outline-color.webp'
+import idle from '../../../assets/img/character/idle.webp'
+import idleColor from '../../../assets/img/character/idle-color.webp'
+import idleOutline from '../../../assets/img/character/idle-outline.webp'
+import idleOutlineColor from '../../../assets/img/character/idle-outline-color.webp'
+import action from '../../../assets/img/character/action.webp'
+import actionColor from '../../../assets/img/character/action-color.webp'
+import actionOutline from '../../../assets/img/character/action-outline.webp'
+import actionOutlineColor from '../../../assets/img/character/action-outline-color.webp'
+import profi from '../../../assets/img/character/profi.webp'
+import profiColor from '../../../assets/img/character/profi-color.webp'
+import profiOutline from '../../../assets/img/character/profi-outline.webp'
+import profiOutlineColor from '../../../assets/img/character/profi-outline-color.webp'
 
 export type CharacterPose = 'idle' | 'action' | 'profi'
 
