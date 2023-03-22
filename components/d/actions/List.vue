@@ -18,6 +18,12 @@
           highlight="negative-list-item"
           no-passive-hl
           @click="$emit('actionChoose', action.emit)"
+          @mouseenter="$emit('actionFocus', action.emit)"
+          @touchstart="$emit('actionFocus', action.emit)"
+          @focusin="$emit('actionFocus', action.emit)"
+          @mouseleave="$emit('actionUnfocus', action.emit)"
+          @touchend="$emit('actionUnfocus', action.emit)"
+          @focusout="$emit('actionUnfocus', action.emit)"
         >
           {{ action.title }}
         </DBtn>
@@ -44,7 +50,7 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['actionChoose'],
+  emits: ['actionFocus', 'actionUnfocus', 'actionChoose'],
   setup() {}
 })
 </script>
