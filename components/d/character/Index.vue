@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as KUTE from 'kute.js'
+import KUTE from 'kute.js'
 
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
@@ -50,6 +50,8 @@ const shapeToAnimate = ref<HTMLElement | null>(null)
 const shapeIdle = ref<HTMLElement | null>(null)
 const shapeAction = ref<HTMLElement | null>(null)
 const shapeProfi = ref<HTMLElement | null>(null)
+
+console.log(KUTE)
 
 watch(
   () => props.pose,
