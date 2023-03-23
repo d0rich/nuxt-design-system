@@ -25,7 +25,9 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
     <div class="prose prose-lg mx-auto">
       <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
       <section class="my-7">
-        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">FocusHighlight and Buttons</h2>
+        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">
+          FocusHighlight and Buttons
+        </h2>
         <div class="not-prose flex flex-wrap gap-3">
           <DBtn>Just Button</DBtn>
           <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
@@ -60,7 +62,6 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
           />
         </div>
       </section>
-
     </div>
   </main>
 </template>

@@ -19,18 +19,16 @@ const props = defineProps({
 
 const currentComponent = computed(() => {
   // @ts-ignore
-  if (props.to || props.href)
-    return resolveComponent('NuxtLink')
+  if (props.to || props.href) return resolveComponent('NuxtLink')
   return props.tag
 })
-
 </script>
 
 <template>
   <DWrapShape>
     <Component
       v-bind="props"
-      :is="tag"
+      :is="currentComponent"
       class="d-focus-hl"
       :class="{
         'd-focus-hl--exact': linkExact,

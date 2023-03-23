@@ -9,9 +9,9 @@ export type ActionFanItem<TEmit = any> = {
   shapeClass?: string
   shapeStyle?: CSSProperties
   attrs?: {
-    to?: string,
-    href?: string,
-    target?: '_blank' | '_self' | '_parent' | '_top' | string,
+    to?: string
+    href?: string
+    target?: '_blank' | '_self' | '_parent' | '_top' | string
     [k: string]: any
   }
 }
@@ -48,7 +48,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   actions.value = props.actions.filter(() => false)
 })
-
 </script>
 
 <template>

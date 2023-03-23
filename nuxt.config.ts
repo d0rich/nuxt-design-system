@@ -16,9 +16,9 @@ export default defineNuxtConfig({
     dirs: [
       {
         path: join(currentDir, './components'),
-        ignore: ['**/*.ts'],
-      },
-    ],
+        ignore: ['**/*.ts']
+      }
+    ]
   },
   colorMode: {
     classSuffix: '',
