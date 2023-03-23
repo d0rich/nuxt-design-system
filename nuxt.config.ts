@@ -1,3 +1,7 @@
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+const currentDir = dirname(fileURLToPath(import.meta.url))
+
 export default defineNuxtConfig({
   build: {
     transpile: ['gsap']
@@ -8,6 +12,14 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-icon'
   ],
+  components: {
+    dirs: [
+      {
+        path: join(currentDir, './components'),
+        ignore: ['**/*.ts'],
+      },
+    ],
+  },
   colorMode: {
     classSuffix: '',
     preference: 'dark'
