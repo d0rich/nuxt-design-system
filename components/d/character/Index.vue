@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import KUTE from 'kute.js'
 import gsap from 'gsap'
 
 import idle from '../../../assets/img/character/idle.webp'
@@ -64,17 +63,8 @@ watch(
     gsap.fromTo(
       shapeToAnimate.value?.$el,
       { morphSVG: poseShapeMap[oldPose] },
-      { morphSVG: poseShapeMap[newPose], duration: .2 }
+      { morphSVG: poseShapeMap[newPose], duration: 0.2 }
     )
-    // KUTE.fromTo(
-    //   shapeToAnimate.value?.$el,
-    //   { path: poseShapeMap[oldPose] },
-    //   { path: poseShapeMap[newPose] },
-    //   {
-    //     duration: 200,
-    //     easing: KUTE.Easing.easingCubicInOut
-    //   }
-    // ).start()
   }
 )
 </script>
