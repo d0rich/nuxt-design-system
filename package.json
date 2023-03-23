@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./nuxt.config.ts",
   "scripts": {
     "lint:ts": "nuxi typecheck",
