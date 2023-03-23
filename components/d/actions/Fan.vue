@@ -3,12 +3,17 @@ import { CSSProperties } from 'vue'
 
 export type ActionFanItem<TEmit = any> = {
   title: string
-  to?: string
   emit?: TEmit
   class?: string
   style?: CSSProperties
   shapeClass?: string
   shapeStyle?: CSSProperties
+  attrs?: {
+    to?: string,
+    href?: string,
+    target?: '_blank' | '_self' | '_parent' | '_top' | string,
+    [k: string]: any
+  }
 }
 
 const props = defineProps({
@@ -81,7 +86,7 @@ onBeforeUnmount(() => {
         }"
       >
         <DBtn
-          :to="action.to"
+          v-bind="action.attrs"
           tag="button"
           no-passive-hl
           @click="$emit('actionChoose', action.emit)"
