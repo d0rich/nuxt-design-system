@@ -17,6 +17,13 @@ const props = defineProps({
   }
 })
 
+const currentComponent = computed(() => {
+  // @ts-ignore
+  if (props.to || props.href)
+    return resolveComponent('NuxtLink')
+  return props.tag
+})
+
 </script>
 
 <template>
