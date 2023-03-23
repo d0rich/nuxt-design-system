@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FocusHighlight, { HighlightVariant } from './wrap/FocusHighlight.vue'
+import { type HighlightVariant } from './wrap'
 
 const props = defineProps({
   to: {
@@ -30,13 +30,13 @@ const currentComponent = computed(() => {
 
 <template>
   <Component :is="currentComponent" class="d-btn" v-bind="props">
-    <FocusHighlight
+    <DWrapFocusHighlight
       :variant="highlight"
       :link-exact="exact"
       :no-passive-link="noPassiveHl"
     >
       <slot />
-    </FocusHighlight>
+    </DWrapFocusHighlight>
   </Component>
 </template>
 

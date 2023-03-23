@@ -1,18 +1,18 @@
 <script setup lang="ts">
 export type ActionListItem<TEmit = any> = {
   title: string
-  emit?: TEmit,
+  emit?: TEmit
   attrs?: {
-    to?: string,
-    href?: string,
-    target?: '_blank' | '_self' | '_parent' | '_top' | string,
+    to?: string
+    href?: string
+    target?: '_blank' | '_self' | '_parent' | '_top' | string
     [k: string]: any
   }
 }
 
 defineEmits(['actionFocus', 'actionUnfocus', 'actionChoose'])
 
-const props = defineProps({
+defineProps({
   actions: {
     type: Array as () => ActionListItem[],
     default: () => []
@@ -22,7 +22,6 @@ const props = defineProps({
     default: ''
   }
 })
-
 </script>
 
 <template>
@@ -35,11 +34,10 @@ const props = defineProps({
     <TransitionGroup
       name="actions"
       tag="ul"
-      class="p-7 relative"
+      class="p-7 relative [&_button]:font-sans [&_button]:font-bold [&_button]:text-left font-sans font-bold"
       :class="listClass"
     >
-      <li v-for="action in actions" :key="action.title"
-        class="[&_button]:font-serif [&_button]:font-bold [&_button]:text-left">
+      <li v-for="action in actions" :key="action.title">
         <DWrapFocusHighlight
           v-bind="action.attrs"
           tag="button"

@@ -54,7 +54,7 @@ function getAsset(pose: CharacterPose) {
 
 let initialSvgPath: ReturnType<typeof resolveComponent>
 
-switch(props.pose) {
+switch (props.pose) {
   case 'idle':
     initialSvgPath = resolveComponent('DCharacterShapeIdle')
     break
@@ -86,7 +86,6 @@ watch(
         { morphSVG: poseShapeMap[newPose], duration: 0.2 }
       )
     }
-
   }
 )
 </script>
@@ -100,13 +99,14 @@ watch(
           <DCharacterShapeAction ref="shapeAction" />
           <DCharacterShapeProfi ref="shapeProfi" />
         </defs>
-        <component :is="initialSvgPath"
+        <component
+          :is="initialSvgPath"
           v-if="!noShape"
           ref="shapeToAnimate"
           :class="shapeClass"
         />
       </svg>
-      <Transition name="character" mode="out-in" v-if="!noImage">
+      <Transition v-if="!noImage" name="character" mode="out-in">
         <img v-if="pose === 'idle'" :src="getAsset('idle')" />
         <img v-else-if="pose === 'action'" :src="getAsset('action')" />
         <img v-else-if="pose === 'profi'" :src="getAsset('profi')" />
