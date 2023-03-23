@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import KUTE from 'kute.js'
+import gsap from 'gsap'
 
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
@@ -55,20 +56,25 @@ watch(
   () => props.pose,
   (newPose, oldPose) => {
     console.log(oldPose, newPose)
-    const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
+    const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
       idle: shapeIdle.value?.$el,
       action: shapeAction.value?.$el,
       profi: shapeProfi.value?.$el
     }
-    KUTE.fromTo(
+    gsap.fromTo(
       shapeToAnimate.value?.$el,
-      { path: poseShapeMap[oldPose] },
-      { path: poseShapeMap[newPose] },
-      {
-        duration: 200,
-        easing: KUTE.Easing.easingCubicInOut
-      }
-    ).start()
+      { morphSVG: poseShapeMap[oldPose] },
+      { morphSVG: poseShapeMap[newPose], duration: .2 }
+    )
+    // KUTE.fromTo(
+    //   shapeToAnimate.value?.$el,
+    //   { path: poseShapeMap[oldPose] },
+    //   { path: poseShapeMap[newPose] },
+    //   {
+    //     duration: 200,
+    //     easing: KUTE.Easing.easingCubicInOut
+    //   }
+    // ).start()
   }
 )
 </script>
