@@ -34,14 +34,10 @@ defineProps({
     <TransitionGroup
       name="actions"
       tag="ul"
-      class="p-7 relative"
+      class="p-7 relative [&_button]:font-sans [&_button]:font-bold [&_button]:text-left font-sans font-bold"
       :class="listClass"
     >
-      <li
-        v-for="action in actions"
-        :key="action.title"
-        class="[&_button]:font-serif [&_button]:font-bold [&_button]:text-left"
-      >
+      <li v-for="action in actions" :key="action.title">
         <DWrapFocusHighlight
           v-bind="action.attrs"
           tag="button"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 defineProps<{
   shapeClass?: string | Record<string, boolean>

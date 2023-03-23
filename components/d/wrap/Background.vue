@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export default defineComponent({
   name: 'Background',
