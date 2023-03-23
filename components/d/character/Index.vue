@@ -54,7 +54,6 @@ const shapeProfi = ref<ComponentPublicInstance | null>(null)
 watch(
   () => props.pose,
   (newPose, oldPose) => {
-    console.log(oldPose, newPose)
     const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
       idle: shapeIdle.value?.$el,
       action: shapeAction.value?.$el,
