@@ -29,6 +29,7 @@
     "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
     "gsap": "^3.11.4",
+    "kute.js": "^2.2.4",
     "nuxt-icon": "^0.3.2"
   }
 }

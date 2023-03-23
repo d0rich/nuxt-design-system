@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import KUTE from 'kute.js'
+
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
 import idleOutline from '../../../assets/img/character/idle-outline.webp'
@@ -43,23 +45,44 @@ function getAsset(pose: CharacterPose) {
     `${pose}${props.outline ? 'Outline' : ''}${props.color ? 'Color' : ''}`
   ]
 }
+
+const shapeToAnimate = ref<HTMLElement | null>(null)
+const shapeIdle = ref<HTMLElement | null>(null)
+const shapeAction = ref<HTMLElement | null>(null)
+const shapeProfi = ref<HTMLElement | null>(null)
+
+watch(() => props.pose, (newPose, oldPose) => {
+  console.log(oldPose, newPose)
+  // const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
+  //   idle: shapeIdle,
+  //   action: shapeAction,
+  //   profi: shapeProfi
+  // }
+  const poseShapeMap: Record<CharacterPose, string> = {
+    idle: '#shape-idle',
+    action: '#shape-action',
+    profi: '#shape-idle'
+  }
+  KUTE.fromTo('#shape-to-animate', { path: poseShapeMap[oldPose] }, { path: poseShapeMap[newPose] }).start()
+})
 </script>
 
 <template>
   <div>
     <div class="relative isolate">
       <svg viewBox="0 0 4269 4269" xmlns="http://www.w3.org/2000/svg">
-        <def>
-          <DCharacterShapeIdle id="shape-idle" class="fill-white" />
-          <DCharacterShapeAction id="shape-action" class="fill-white" />
-          <DCharacterShapeProfi id="shape-profi" class="fill-white" />
-        </def>
+        <defs>
+          <DCharacterShapeIdle id="shape-idle" ref="shapeIdle" />
+          <DCharacterShapeAction id="shape-action" ref="shapeAction" />
+          <DCharacterShapeProfi id="shape-profi" ref="shapeProfi" />
+        </defs>
+        <DCharacterShapeIdle id="shape-to-animate" class="fill-white" ref="shapeToAnimate" />
       </svg>
-      <Transition name="character" mode="out-in">
+      <!-- <Transition name="character" mode="out-in">
         <img v-if="pose === 'idle'" :src="getAsset('idle')" />
         <img v-else-if="pose === 'action'" :src="getAsset('action')" />
         <img v-else-if="pose === 'profi'" :src="getAsset('profi')" />
-      </Transition>
+      </Transition> -->
     </div>
   </div>
 </template>
