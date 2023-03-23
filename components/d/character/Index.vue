@@ -22,7 +22,13 @@ const props = defineProps({
     required: true
   },
   outline: Boolean,
-  color: Boolean
+  color: Boolean,
+  noShape: Boolean,
+  noImage: Boolean,
+  shapeClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: () => 'fill-white'
+  }
 })
 
 const assets = {
@@ -46,6 +52,20 @@ function getAsset(pose: CharacterPose) {
   ]
 }
 
+let initialSvgPath: ReturnType<typeof resolveComponent>
+
+switch(props.pose) {
+  case 'idle':
+    initialSvgPath = resolveComponent('DCharacterShapeIdle')
+    break
+  case 'profi':
+    initialSvgPath = resolveComponent('DCharacterShapeProfi')
+    break
+  case 'action':
+    initialSvgPath = resolveComponent('DCharacterShapeAction')
+    break
+}
+
 const shapeToAnimate = ref<ComponentPublicInstance | null>(null)
 const shapeIdle = ref<ComponentPublicInstance | null>(null)
 const shapeAction = ref<ComponentPublicInstance | null>(null)
@@ -54,16 +74,19 @@ const shapeProfi = ref<ComponentPublicInstance | null>(null)
 watch(
   () => props.pose,
   (newPose, oldPose) => {
-    const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
-      idle: shapeIdle.value?.$el,
-      action: shapeAction.value?.$el,
-      profi: shapeProfi.value?.$el
+    if (!props.noShape) {
+      const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
+        idle: shapeIdle.value?.$el,
+        action: shapeAction.value?.$el,
+        profi: shapeProfi.value?.$el
+      }
+      gsap.fromTo(
+        shapeToAnimate.value?.$el,
+        { morphSVG: poseShapeMap[oldPose] },
+        { morphSVG: poseShapeMap[newPose], duration: 0.2 }
+      )
     }
-    gsap.fromTo(
-      shapeToAnimate.value?.$el,
-      { morphSVG: poseShapeMap[oldPose] },
-      { morphSVG: poseShapeMap[newPose], duration: 0.2 }
-    )
+
   }
 )
 </script>
@@ -72,22 +95,22 @@ watch(
   <div>
     <div class="relative isolate">
       <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <DCharacterShapeIdle id="shape-idle" ref="shapeIdle" />
-          <DCharacterShapeAction id="shape-action" ref="shapeAction" />
-          <DCharacterShapeProfi id="shape-profi" ref="shapeProfi" />
+        <defs v-if="!noShape">
+          <DCharacterShapeIdle ref="shapeIdle" />
+          <DCharacterShapeAction ref="shapeAction" />
+          <DCharacterShapeProfi ref="shapeProfi" />
         </defs>
-        <DCharacterShapeIdle
-          id="shape-to-animate"
+        <component :is="initialSvgPath"
+          v-if="!noShape"
           ref="shapeToAnimate"
-          class="fill-white"
+          :class="shapeClass"
         />
       </svg>
-      <!-- <Transition name="character" mode="out-in">
+      <Transition name="character" mode="out-in" v-if="!noImage">
         <img v-if="pose === 'idle'" :src="getAsset('idle')" />
         <img v-else-if="pose === 'action'" :src="getAsset('action')" />
         <img v-else-if="pose === 'profi'" :src="getAsset('profi')" />
-      </Transition> -->
+      </Transition>
     </div>
   </div>
 </template>
