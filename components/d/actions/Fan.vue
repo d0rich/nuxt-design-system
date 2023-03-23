@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <TransitionGroup name="actions" tag="ul">
+  <TransitionGroup name="actions" tag="ul" class="py-8">
     <DWrapShape
       v-for="(action, index) in actions"
       :key="action.title"

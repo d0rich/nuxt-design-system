@@ -46,14 +46,14 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         </div>
         <div class="grid md:grid-cols-3 not-prose items-center">
           <DActionsFan
-            class="text-white"
+            class="text-white py-20"
             side="left"
             :actions="fanItems"
             @action-focus="pose = $event"
           />
           <DCharacter :pose="pose" shape-class="fill-red-500" no-image />
           <DActionsFan
-            class="text-white"
+            class="text-white py-20"
             side="right"
             :actions="fanItems"
             @action-focus="pose = $event"
