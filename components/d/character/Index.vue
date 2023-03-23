@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import KUTE from 'kute.js'
+import * as KUTE from 'kute.js'
 
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
@@ -51,32 +51,43 @@ const shapeIdle = ref<HTMLElement | null>(null)
 const shapeAction = ref<HTMLElement | null>(null)
 const shapeProfi = ref<HTMLElement | null>(null)
 
-watch(() => props.pose, (newPose, oldPose) => {
-  console.log(oldPose, newPose)
-  // const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
-  //   idle: shapeIdle,
-  //   action: shapeAction,
-  //   profi: shapeProfi
-  // }
-  const poseShapeMap: Record<CharacterPose, string> = {
-    idle: '#shape-idle',
-    action: '#shape-action',
-    profi: '#shape-idle'
+watch(
+  () => props.pose,
+  (newPose, oldPose) => {
+    console.log(oldPose, newPose)
+    // const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
+    //   idle: shapeIdle,
+    //   action: shapeAction,
+    //   profi: shapeProfi
+    // }
+    const poseShapeMap: Record<CharacterPose, string> = {
+      idle: '#shape-idle',
+      action: '#shape-action',
+      profi: '#shape-idle'
+    }
+    KUTE.fromTo(
+      '#shape-to-animate',
+      { path: poseShapeMap[oldPose] },
+      { path: poseShapeMap[newPose] }
+    ).start()
   }
-  KUTE.fromTo('#shape-to-animate', { path: poseShapeMap[oldPose] }, { path: poseShapeMap[newPose] }).start()
-})
+)
 </script>
 
 <template>
   <div>
     <div class="relative isolate">
-      <svg viewBox="0 0 4269 4269" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <DCharacterShapeIdle id="shape-idle" ref="shapeIdle" />
           <DCharacterShapeAction id="shape-action" ref="shapeAction" />
           <DCharacterShapeProfi id="shape-profi" ref="shapeProfi" />
         </defs>
-        <DCharacterShapeIdle id="shape-to-animate" class="fill-white" ref="shapeToAnimate" />
+        <DCharacterShapeIdle
+          id="shape-to-animate"
+          ref="shapeToAnimate"
+          class="fill-white"
+        />
       </svg>
       <!-- <Transition name="character" mode="out-in">
         <img v-if="pose === 'idle'" :src="getAsset('idle')" />
