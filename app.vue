@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { CharacterPose } from './components/d/character/Index.vue'
 import { ActionListItem } from './components/d/actions/List.vue'
+import { ActionFanItem } from './components/d/actions/Fan.vue'
 
 const pose = ref<CharacterPose>('action')
-const poseOptions = ref<ActionListItem<CharacterPose>[]>([
+const listItems = ref<ActionListItem<CharacterPose>[]>([
+  { title: 'Idle', emit: 'idle' },
+  { title: 'Action', emit: 'action' },
+  { title: 'Profi', emit: 'profi' }
+])
+
+const fanItems = ref<ActionFanItem<CharacterPose>[]>([
   { title: 'Idle', emit: 'idle' },
   { title: 'Action', emit: 'action' },
   { title: 'Profi', emit: 'profi' }
@@ -18,7 +25,7 @@ const poseOptions = ref<ActionListItem<CharacterPose>[]>([
     <div class="prose prose-lg mx-auto">
       <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
       <section class="my-7">
-        <h2>FocusHighlight and Buttons</h2>
+        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">FocusHighlight and Buttons</h2>
         <div class="not-prose flex flex-wrap gap-3">
           <DBtn>Just Button</DBtn>
           <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
@@ -28,12 +35,27 @@ const poseOptions = ref<ActionListItem<CharacterPose>[]>([
         </div>
       </section>
       <section class="my-7">
-        <h2>Lists</h2>
+        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Lists</h2>
         <div class="grid md:grid-cols-2 not-prose items-center">
           <DCharacter :pose="pose" no-image />
           <DActionsList
             class="text-white"
-            :actions="poseOptions"
+            :actions="listItems"
+            @action-focus="pose = $event"
+          />
+        </div>
+        <div class="grid md:grid-cols-3 not-prose items-center">
+          <DActionsFan
+            class="text-white"
+            side="left"
+            :actions="fanItems"
+            @action-focus="pose = $event"
+          />
+          <DCharacter :pose="pose" shape-class="fill-red-500" no-image />
+          <DActionsFan
+            class="text-white"
+            side="right"
+            :actions="fanItems"
             @action-focus="pose = $event"
           />
         </div>
