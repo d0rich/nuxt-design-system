@@ -46,29 +46,28 @@ function getAsset(pose: CharacterPose) {
   ]
 }
 
-const shapeToAnimate = ref<HTMLElement | null>(null)
-const shapeIdle = ref<HTMLElement | null>(null)
-const shapeAction = ref<HTMLElement | null>(null)
-const shapeProfi = ref<HTMLElement | null>(null)
+const shapeToAnimate = ref<ComponentPublicInstance | null>(null)
+const shapeIdle = ref<ComponentPublicInstance | null>(null)
+const shapeAction = ref<ComponentPublicInstance | null>(null)
+const shapeProfi = ref<ComponentPublicInstance | null>(null)
 
 watch(
   () => props.pose,
   (newPose, oldPose) => {
     console.log(oldPose, newPose)
-    // const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
-    //   idle: shapeIdle,
-    //   action: shapeAction,
-    //   profi: shapeProfi
-    // }
-    const poseShapeMap: Record<CharacterPose, string> = {
-      idle: '#shape-idle',
-      action: '#shape-action',
-      profi: '#shape-idle'
+    const poseShapeMap: Record<CharacterPose, Ref<HTMLElement | null>> = {
+      idle: shapeIdle.value?.$el,
+      action: shapeAction.value?.$el,
+      profi: shapeProfi.value?.$el
     }
     KUTE.fromTo(
-      '#shape-to-animate',
+      shapeToAnimate.value?.$el,
       { path: poseShapeMap[oldPose] },
-      { path: poseShapeMap[newPose] }
+      { path: poseShapeMap[newPose] },
+      {
+        duration: 200,
+        easing: KUTE.Easing.easingCubicInOut
+      }
     ).start()
   }
 )
