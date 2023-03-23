@@ -31,7 +31,7 @@ export default defineComponent({
     noPassiveHl: Boolean,
     tag: {
       type: String,
-      default: 'span'
+      default: 'button'
     },
     highlight: {
       type: String as () => HighlightVariant,
@@ -42,7 +42,6 @@ export default defineComponent({
     const NuxtLink = resolveComponent('NuxtLink')
     return {
       currentComponent: computed(() => {
-        if (props.tag === 'a') return props.tag
         if (props.to || props.href) return NuxtLink
         return props.tag
       }),
