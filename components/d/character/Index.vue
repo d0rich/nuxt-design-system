@@ -51,8 +51,6 @@ const shapeIdle = ref<HTMLElement | null>(null)
 const shapeAction = ref<HTMLElement | null>(null)
 const shapeProfi = ref<HTMLElement | null>(null)
 
-console.log(KUTE)
-
 watch(
   () => props.pose,
   (newPose, oldPose) => {
