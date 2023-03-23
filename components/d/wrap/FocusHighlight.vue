@@ -1,6 +1,35 @@
+<script setup lang="ts">
+export type HighlightVariant =
+  | 'negative-tile'
+  | 'list-item'
+  | 'negative-list-item'
+
+const props = defineProps({
+  linkExact: Boolean,
+  noPassiveLink: Boolean,
+  variant: {
+    type: String as () => HighlightVariant,
+    default: 'negative-tile'
+  },
+  tag: {
+    type: String,
+    default: 'div'
+  }
+})
+
+const currentComponent = computed(() => {
+  // @ts-ignore
+  if (props.to || props.href)
+    return resolveComponent('NuxtLink')
+  return props.tag
+})
+
+</script>
+
 <template>
   <DWrapShape>
     <Component
+      v-bind="props"
       :is="tag"
       class="d-focus-hl"
       :class="{
@@ -25,28 +54,6 @@
     </Component>
   </DWrapShape>
 </template>
-
-<script lang="ts">
-export type HighlightVariant =
-  | 'negative-tile'
-  | 'list-item'
-  | 'negative-list-item'
-
-export default defineComponent({
-  props: {
-    linkExact: Boolean,
-    noPassiveLink: Boolean,
-    variant: {
-      type: String as () => HighlightVariant,
-      default: 'negative-tile'
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    }
-  }
-})
-</script>
 
 <!-- common -->
 <style>

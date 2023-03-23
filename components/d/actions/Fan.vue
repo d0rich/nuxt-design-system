@@ -1,7 +1,60 @@
+<script setup lang="ts">
+import { CSSProperties } from 'vue'
+
+export type ActionFanItem<TEmit = any> = {
+  title: string
+  emit?: TEmit
+  class?: string
+  style?: CSSProperties
+  shapeClass?: string
+  shapeStyle?: CSSProperties
+  attrs?: {
+    to?: string,
+    href?: string,
+    target?: '_blank' | '_self' | '_parent' | '_top' | string,
+    [k: string]: any
+  }
+}
+
+const props = defineProps({
+  actions: {
+    type: Array as () => ActionFanItem[],
+    default: () => []
+  },
+  side: {
+    type: String as () => 'right' | 'left',
+    default: 'left'
+  },
+  filterClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: ''
+  }
+})
+
+defineEmits(['actionFocus', 'actionUnfocus', 'actionChoose'])
+
+const shapeStyles: Record<string, CSSProperties> = {
+  left: {
+    clipPath: 'polygon(10px 0, 0 100%, 100% 40%)'
+  },
+  right: {
+    clipPath: 'polygon(calc(100% - 10px) 0, 100% 100%, 0 40%)'
+  }
+}
+const actions = ref<ActionFanItem[]>([])
+onMounted(() => {
+  actions.value = props.actions.filter(() => true)
+})
+onBeforeUnmount(() => {
+  actions.value = props.actions.filter(() => false)
+})
+
+</script>
+
 <template>
-  <TransitionGroup name="actions" tag="ul">
+  <TransitionGroup name="actions" tag="ul" class="py-8">
     <DWrapShape
-      v-for="(action, index) in displayedActions"
+      v-for="(action, index) in actions"
       :key="action.title"
       tag="li"
       class="w-full transform -my-8"
@@ -33,7 +86,7 @@
         }"
       >
         <DBtn
-          :to="action.to"
+          v-bind="action.attrs"
           tag="button"
           no-passive-hl
           @click="$emit('actionChoose', action.emit)"
@@ -50,60 +103,6 @@
     </DWrapShape>
   </TransitionGroup>
 </template>
-
-<script lang="ts">
-import { CSSProperties } from 'vue'
-
-export type ActionFanItem<TEmit = any> = {
-  title: string
-  to?: string
-  emit?: TEmit
-  class?: string
-  style?: CSSProperties
-  shapeClass?: string
-  shapeStyle?: CSSProperties
-}
-
-export default defineComponent({
-  name: 'ActionsFan',
-  props: {
-    actions: {
-      type: Array as () => ActionFanItem[],
-      default: () => []
-    },
-    side: {
-      type: String as () => 'right' | 'left',
-      default: 'left'
-    },
-    filterClass: {
-      type: [String, Object as () => Record<string, boolean>],
-      default: ''
-    }
-  },
-  emits: ['actionFocus', 'actionUnfocus', 'actionChoose'],
-  setup(props) {
-    const shapeStyles: Record<string, CSSProperties> = {
-      left: {
-        clipPath: 'polygon(10px 0, 0 100%, 100% 40%)'
-      },
-      right: {
-        clipPath: 'polygon(calc(100% - 10px) 0, 100% 100%, 0 40%)'
-      }
-    }
-    const actions = ref<ActionFanItem[]>([])
-    onMounted(() => {
-      actions.value = props.actions.filter(() => true)
-    })
-    onBeforeUnmount(() => {
-      actions.value = props.actions.filter(() => false)
-    })
-    return {
-      displayedActions: actions,
-      shapeStyles
-    }
-  }
-})
-</script>
 
 <style>
 .actions-enter-active,

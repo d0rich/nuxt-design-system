@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import FocusHighlight, { HighlightVariant } from './wrap/FocusHighlight.vue'
+
+const props = defineProps({
+  to: {
+    type: String,
+    default: undefined
+  },
+  href: {
+    type: String,
+    default: undefined
+  },
+  exact: Boolean,
+  noPassiveHl: Boolean,
+  tag: {
+    type: String,
+    default: 'button'
+  },
+  highlight: {
+    type: String as () => HighlightVariant,
+    default: undefined
+  }
+})
+
+const currentComponent = computed(() => {
+  if (props.to || props.href) return resolveComponent('NuxtLink')
+  return props.tag
+})
+</script>
+
 <template>
   <Component :is="currentComponent" class="d-btn" v-bind="props">
     <FocusHighlight
@@ -9,48 +39,6 @@
     </FocusHighlight>
   </Component>
 </template>
-
-<script lang="ts">
-import FocusHighlight, { HighlightVariant } from './wrap/FocusHighlight.vue'
-
-export default defineComponent({
-  name: 'DButton',
-  components: {
-    FocusHighlight
-  },
-  props: {
-    to: {
-      type: String,
-      default: undefined
-    },
-    href: {
-      type: String,
-      default: undefined
-    },
-    exact: Boolean,
-    noPassiveHl: Boolean,
-    tag: {
-      type: String,
-      default: 'span'
-    },
-    highlight: {
-      type: String as () => HighlightVariant,
-      default: undefined
-    }
-  },
-  setup(props) {
-    const NuxtLink = resolveComponent('NuxtLink')
-    return {
-      currentComponent: computed(() => {
-        if (props.tag === 'a') return props.tag
-        if (props.to || props.href) return NuxtLink
-        return props.tag
-      }),
-      props
-    }
-  }
-})
-</script>
 
 <style>
 .d-btn {

@@ -1,3 +1,30 @@
+<script setup lang="ts">
+export type ActionListItem<TEmit = any> = {
+  title: string
+  emit?: TEmit,
+  attrs?: {
+    to?: string,
+    href?: string,
+    target?: '_blank' | '_self' | '_parent' | '_top' | string,
+    [k: string]: any
+  }
+}
+
+defineEmits(['actionFocus', 'actionUnfocus', 'actionChoose'])
+
+const props = defineProps({
+  actions: {
+    type: Array as () => ActionListItem[],
+    default: () => []
+  },
+  listClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: ''
+  }
+})
+
+</script>
+
 <template>
   <DWrapShape
     shape-class="dark:bg-neutral-900 dark:bg-opacity-80 backdrop-blur"
@@ -11,11 +38,12 @@
       class="p-7 relative"
       :class="listClass"
     >
-      <li v-for="action in actions" :key="action.title">
-        <DBtn
-          :to="action.to"
+      <li v-for="action in actions" :key="action.title"
+        class="[&_button]:font-serif [&_button]:font-bold [&_button]:text-left">
+        <DWrapFocusHighlight
+          v-bind="action.attrs"
           tag="button"
-          highlight="negative-list-item"
+          variant="negative-list-item"
           no-passive-hl
           @click="$emit('actionChoose', action.emit)"
           @mouseenter="$emit('actionFocus', action.emit)"
@@ -26,33 +54,10 @@
           @focusout="$emit('actionUnfocus', action.emit)"
         >
           {{ action.title }}
-        </DBtn>
+        </DWrapFocusHighlight>
       </li>
     </TransitionGroup>
   </DWrapShape>
 </template>
-
-<script lang="ts">
-export type ActionListItem<TEmit = any> = {
-  title: string
-  to?: string
-  emit?: TEmit
-}
-
-export default defineComponent({
-  props: {
-    actions: {
-      type: Array as () => ActionListItem[],
-      default: () => []
-    },
-    listClass: {
-      type: [String, Object as () => Record<string, boolean>],
-      default: ''
-    }
-  },
-  emits: ['actionFocus', 'actionUnfocus', 'actionChoose'],
-  setup() {}
-})
-</script>
 
 <style></style>
