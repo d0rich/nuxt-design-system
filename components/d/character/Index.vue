@@ -74,33 +74,32 @@ const shapeProfi = ref<ComponentPublicInstance | null>(null)
 watch(
   () => props.pose,
   (newPose, oldPose) => {
-    if (!props.noShape) {
-      const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
-        idle: shapeIdle.value?.$el,
-        action: shapeAction.value?.$el,
-        profi: shapeProfi.value?.$el
-      }
-      try {
-        gsap.fromTo(
-          shapeToAnimate.value?.$el,
-          { morphSVG: poseShapeMap[oldPose] },
-          { morphSVG: poseShapeMap[newPose], duration: 0.2 }
-        )
-      } catch (err) {
-        switch (newPose) {
-          case 'idle':
-            initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
-            break
-          case 'profi':
-            initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
-            break
-          case 'action':
-            initialSvgPath.value = resolveComponent('DCharacterShapeAction')
-            break
-        }
-      }
-
+    if (props.noShape) return
+    const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
+      idle: shapeIdle.value?.$el,
+      action: shapeAction.value?.$el,
+      profi: shapeProfi.value?.$el
     }
+    if (typeof gsap.plugins.morphSVG === 'function') {
+      gsap.fromTo(
+        shapeToAnimate.value?.$el,
+        { morphSVG: poseShapeMap[oldPose] },
+        { morphSVG: poseShapeMap[newPose], duration: 0.2 }
+      )
+    } else {
+      switch (newPose) {
+        case 'idle':
+          initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
+          break
+        case 'profi':
+          initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
+          break
+        case 'action':
+          initialSvgPath.value = resolveComponent('DCharacterShapeAction')
+          break
+      }
+    }
+
   }
 )
 </script>
