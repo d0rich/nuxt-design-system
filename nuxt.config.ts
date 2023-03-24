@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import * as fs from 'fs'
+
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export default defineNuxtConfig({
@@ -10,7 +12,7 @@ export default defineNuxtConfig({
     build: {
       rollupOptions: {
         external(source, importer, isResolved) {
-            return source === 'gsap/MorphSVGPlugin' && !isResolved
+          return source === 'gsap/MorphSVGPlugin' && !fs.existsSync('./node_modules/gsap/MorphSVGPlugin.js')
         },
       }
     }
