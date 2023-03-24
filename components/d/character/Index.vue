@@ -52,17 +52,18 @@ function getAsset(pose: CharacterPose) {
   ]
 }
 
-const initialSvgPath: Ref<ReturnType<typeof resolveComponent>> = ref(resolveComponent('DCharacterShapeIdle'))
+let initialSvgPath: ReturnType<typeof resolveComponent>
+const useHref = ref(`#${props.pose}-shape`)
 
 switch (props.pose) {
   case 'idle':
-    initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
+    initialSvgPath = resolveComponent('DCharacterShapeIdle')
     break
   case 'profi':
-    initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
+    initialSvgPath = resolveComponent('DCharacterShapeProfi')
     break
   case 'action':
-    initialSvgPath.value = resolveComponent('DCharacterShapeAction')
+    initialSvgPath = resolveComponent('DCharacterShapeAction')
     break
 }
 
@@ -80,26 +81,15 @@ watch(
       action: shapeAction.value?.$el,
       profi: shapeProfi.value?.$el
     }
-    if (typeof gsap.plugins.morphSVG === 'function') {
+    if (isMorphSVGPluginInstalled()) {
       gsap.fromTo(
         shapeToAnimate.value?.$el,
         { morphSVG: poseShapeMap[oldPose] },
         { morphSVG: poseShapeMap[newPose], duration: 0.2 }
       )
     } else {
-      switch (newPose) {
-        case 'idle':
-          initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
-          break
-        case 'profi':
-          initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
-          break
-        case 'action':
-          initialSvgPath.value = resolveComponent('DCharacterShapeAction')
-          break
-      }
+      useHref.value = `#${newPose}-shape`
     }
-
   }
 )
 </script>
@@ -109,16 +99,23 @@ watch(
     <div class="relative isolate w-full h-full">
       <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
         <defs v-if="!noShape">
-          <DCharacterShapeIdle ref="shapeIdle" />
-          <DCharacterShapeAction ref="shapeAction" />
-          <DCharacterShapeProfi ref="shapeProfi" />
+          <DCharacterShapeIdle id="idle-shape" ref="shapeIdle" />
+          <DCharacterShapeAction id="action-shape" ref="shapeAction" />
+          <DCharacterShapeProfi id="profi-shape" ref="shapeProfi" />
         </defs>
-        <component
-          :is="initialSvgPath"
-          v-if="!noShape"
-          ref="shapeToAnimate"
-          :class="shapeClass"
-        />
+        <g v-if="!noShape">
+          <component
+            :is="initialSvgPath"
+            v-show="isMorphSVGPluginInstalled()"
+            ref="shapeToAnimate"
+            :class="shapeClass"
+          />
+          <use
+            v-show="!isMorphSVGPluginInstalled()"
+            :class="shapeClass"
+            :href="useHref"
+          />
+        </g>
       </svg>
       <Transition v-if="!noImage" name="character" mode="out-in">
         <img v-if="pose === 'idle'" :src="getAsset('idle')" />
