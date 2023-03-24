@@ -21,5 +21,5 @@ if (!fs.existsSync(path)) {
     .join('/')
   if (!fs.existsSync(dirPath))
     fs.mkdirSync(dirPath, { recursive: true })
-  fs.writeFileSync(path, 'export const MorphSVGPlugin = {}', { encoding: 'utf-8' })
+  fs.writeFileSync(path, 'export default {}', { encoding: 'utf-8' })
 }
