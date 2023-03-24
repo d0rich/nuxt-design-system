@@ -1,8 +1,9 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "./nuxt.config.ts",
   "scripts": {
+    "postinstall": "node fallbackDependencies.mjs",
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
@@ -30,5 +31,8 @@
     "@tailwindcss/typography": "^0.5.8",
     "gsap": "npm:@gsap/shockingly@^3.11.5",
     "nuxt-icon": "^0.3.2"
+  },
+  "optionalDependencies": {
+    "gsap": "^3.11.5"
   }
 }

@@ -1,3 +1,4 @@
+import consola from 'consola'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -7,4 +8,6 @@ export default defineNuxtPlugin(() => {
   gsap.registerPlugin(MotionPathPlugin)
   gsap.registerPlugin(ScrollTrigger)
   gsap.registerPlugin(MorphSVGPlugin)
+  if (!isMorphSVGPluginInstalled())
+    consola.warn('Free GSAP is used. Morph SVG plugin is ignored.')
 })
