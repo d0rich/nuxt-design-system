@@ -13,3 +13,13 @@ for (let dependency in packageJson.dependencies) {
   }
 }
 
+// Manually create files to avoid Rollup error
+const path = './node_modules/gsap/MorphSVGPlugin.js'
+if (!fs.existsSync(path)) {
+  const dirPath = path.split('/')
+    .slice(0, -1)
+    .join('/')
+  if (!fs.existsSync(dirPath))
+    fs.mkdirSync(dirPath, { recursive: true })
+  fs.writeFileSync(path, 'export default {}', { encoding: 'utf-8' })
+}
