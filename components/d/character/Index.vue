@@ -52,17 +52,17 @@ function getAsset(pose: CharacterPose) {
   ]
 }
 
-let initialSvgPath: ReturnType<typeof resolveComponent>
+const initialSvgPath: Ref<ReturnType<typeof resolveComponent>> = ref(resolveComponent('DCharacterShapeIdle'))
 
 switch (props.pose) {
   case 'idle':
-    initialSvgPath = resolveComponent('DCharacterShapeIdle')
+    initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
     break
   case 'profi':
-    initialSvgPath = resolveComponent('DCharacterShapeProfi')
+    initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
     break
   case 'action':
-    initialSvgPath = resolveComponent('DCharacterShapeAction')
+    initialSvgPath.value = resolveComponent('DCharacterShapeAction')
     break
 }
 
@@ -80,11 +80,26 @@ watch(
         action: shapeAction.value?.$el,
         profi: shapeProfi.value?.$el
       }
-      gsap.fromTo(
-        shapeToAnimate.value?.$el,
-        { morphSVG: poseShapeMap[oldPose] },
-        { morphSVG: poseShapeMap[newPose], duration: 0.2 }
-      )
+      try {
+        gsap.fromTo(
+          shapeToAnimate.value?.$el,
+          { morphSVG: poseShapeMap[oldPose] },
+          { morphSVG: poseShapeMap[newPose], duration: 0.2 }
+        )
+      } catch (err) {
+        switch (newPose) {
+          case 'idle':
+            initialSvgPath.value = resolveComponent('DCharacterShapeIdle')
+            break
+          case 'profi':
+            initialSvgPath.value = resolveComponent('DCharacterShapeProfi')
+            break
+          case 'action':
+            initialSvgPath.value = resolveComponent('DCharacterShapeAction')
+            break
+        }
+      }
+
     }
   }
 )
