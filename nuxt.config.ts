@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   build: {
     transpile: ['gsap']
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['gsap']
+      }
+    }
+  },
   modules: [
     '@nuxtjs/google-fonts',
     '@nuxtjs/tailwindcss',
