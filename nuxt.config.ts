@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['gsap/MorphSVGPlugin']
+        //external: ['gsap/MorphSVGPlugin']
       }
     }
   },
