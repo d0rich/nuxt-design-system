@@ -92,7 +92,7 @@ watch(
 
 <template>
   <div>
-    <div class="relative isolate">
+    <div class="relative isolate w-full h-full">
       <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
         <defs v-if="!noShape">
           <DCharacterShapeIdle ref="shapeIdle" />
@@ -116,8 +116,12 @@ watch(
 </template>
 
 <style scoped>
+svg {
+  @apply w-full h-full;
+}
+
 img {
-  @apply w-full h-auto absolute inset-0 z-10;
+  @apply w-full h-auto absolute inset-0 my-auto z-10;
 }
 
 .character-enter-active,
