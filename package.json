@@ -32,7 +32,7 @@
     "gsap": "npm:@gsap/shockingly@^3.11.5",
     "nuxt-icon": "^0.3.2"
   },
-  "optionalDependencies": {
+  "fallbackDependencies": {
     "gsap": "^3.11.5"
   }
 }
