@@ -17,6 +17,7 @@ for (let dependency in packageJson.optionalDependencies) {
         try {
           const packageToInstall = `${dependency}@${version}`
           execSync(`npm install ${packageToInstall}`)
+          consola.info(`${packageToInstall} is installed`)
           break
         } catch (e) {
           consola.error(`Failed to install ${dependency} : ${version}`)
