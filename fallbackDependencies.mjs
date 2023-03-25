@@ -1,40 +1,28 @@
-// import { execSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import * as fs from 'fs'
-// import consola from 'consola'
+import consola from 'consola'
 
-// const packageJson = JSON.parse(
-//   fs.readFileSync('./package.json', { encoding: 'utf-8' })
-// )
+const packageJson = JSON.parse(
+  fs.readFileSync('./package.json', { encoding: 'utf-8' })
+)
 
 // Check if dependencies folders exist
-// for (let dependency in packageJson.optionalDependencies) {
-//   function isInstalled() {
-//     return fs.existsSync(`./node_modules/${dependency}`)
-//   }
-//   if (!isInstalled()) {
-//     consola.info(`Installing ${dependency} from fallbackDependencies`)
-//     const fallbackDependency = packageJson.fallbackDependencies[dependency]
-//     if (Array.isArray(fallbackDependency)) {
-//       for (let version of fallbackDependency) {
-//         const packageToInstall = `${dependency}@${version}`
-//         execSync(`npm install ${packageToInstall} --no-save`)
-//         if (isInstalled()) {
-//           consola.info(`${packageToInstall} is installed`)
-//           break
-//         }
-//         consola.error(`Failed to install ${packageToInstall}`)
-//       }
-//     } else if (typeof fallbackDependency === 'string') {
-//       const packageToInstall = `${dependency}@${fallbackDependency}`
-//       execSync(`npm install ${packageToInstall} --no-save`)
-//       if (isInstalled()) {
-//         consola.info(`${packageToInstall} is installed`)
-//       } else {
-//         consola.error(`Failed to install ${packageToInstall}`)
-//       }
-//     }
-//   }
-// }
+for (let dependency in packageJson.dependencies) {
+  function isInstalled() {
+    return fs.existsSync(`./node_modules/${dependency}`)
+  }
+  if (!isInstalled()) {
+    consola.info(`Installing ${dependency} from fallbackDependencies`)
+    const fallbackDependency = packageJson.optionalDependencies[dependency]
+    const packageToInstall = `${dependency}@${fallbackDependency}`
+    execSync(`npm install ${packageToInstall} --no-save`)
+    if (isInstalled()) {
+      consola.info(`${packageToInstall} is installed`)
+    } else {
+      consola.error(`Failed to install ${packageToInstall}`)
+    }
+  }
+}
 
 // Manually create files to avoid Rollup error
 const files = {
