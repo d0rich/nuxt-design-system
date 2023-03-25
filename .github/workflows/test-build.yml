@@ -18,8 +18,3 @@ jobs:
           node-version: 16
       - run: npm install
       - run: npm run generate
-      - name: Archive test build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: .output/public

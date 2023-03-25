@@ -1,12 +1,10 @@
-import { spawnSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import * as fs from 'fs'
 import consola from 'consola'
 
 const packageJson = JSON.parse(
   fs.readFileSync('./package.json', { encoding: 'utf-8' })
 )
-
-consola.log(process.env.GSAP_TOKEN)
 
 // Check if dependencies folders exist
 for (let dependency in packageJson.optionalDependencies) {
@@ -19,7 +17,7 @@ for (let dependency in packageJson.optionalDependencies) {
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
         const packageToInstall = `${dependency}@${version}`
-        spawnSync(`npm install ${packageToInstall} --no-save`)
+        execSync(`npm install ${packageToInstall} --no-save`)
         if (isInstalled()) {
           consola.info(`${packageToInstall} is installed`)
           break
@@ -28,7 +26,7 @@ for (let dependency in packageJson.optionalDependencies) {
       }
     } else if (typeof fallbackDependency === 'string') {
       const packageToInstall = `${dependency}@${fallbackDependency}`
-      spawnSync(`npm install ${packageToInstall} --no-save`)
+      execSync(`npm install ${packageToInstall} --no-save`)
       if (isInstalled()) {
         consola.info(`${packageToInstall} is installed`)
       } else {
