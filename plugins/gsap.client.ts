@@ -1,4 +1,4 @@
-import consola from 'consola'
+import consola from 'consola/src/browser'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
