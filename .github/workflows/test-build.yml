@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  GSAP_TOKEN: ${{secrets.GSAP_TOKEN}}
+
+jobs:
+  test-build:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: ls ./node_modules/gsap
+      - run: npm run generate
