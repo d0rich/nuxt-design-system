@@ -7,7 +7,7 @@ const packageJson = JSON.parse(
 )
 
 // Check if dependencies folders exist
-for (let dependency in packageJson.dependencies) {
+for (let dependency in packageJson.optionalDependencies) {
   const isInstalled = fs.existsSync(`./node_modules/${dependency}`)
   if (!isInstalled) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
