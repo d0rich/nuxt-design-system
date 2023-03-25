@@ -11,7 +11,7 @@ for (let dependency in packageJson.optionalDependencies) {
   const isInstalled = fs.existsSync(`./node_modules/${dependency}`)
   if (!isInstalled) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
-    const fallbackDependency = fallbackDependencies[dependency]
+    const fallbackDependency = packageJson.fallbackDependencies[dependency]
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
         try {
