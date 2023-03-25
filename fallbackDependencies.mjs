@@ -15,9 +15,7 @@ for (let dependency in packageJson.optionalDependencies) {
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
         try {
-          const packageToInstall = version.includes('@')
-            ? version
-            : `${dependency}@${fallbackDependency}`
+          const packageToInstall = `${dependency}@${version}`
           execSync(`npm install ${packageToInstall}`)
           break
         } catch (e) {
