@@ -6,6 +6,8 @@ const packageJson = JSON.parse(
   fs.readFileSync('./package.json', { encoding: 'utf-8' })
 )
 
+consola.log(process.env.GSAP_TOKEN)
+
 // Check if dependencies folders exist
 for (let dependency in packageJson.optionalDependencies) {
   function isInstalled() {
