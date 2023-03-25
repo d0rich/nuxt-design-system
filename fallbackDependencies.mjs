@@ -11,9 +11,29 @@ for (let dependency in packageJson.optionalDependencies) {
   const isInstalled = fs.existsSync(`./node_modules/${dependency}`)
   if (!isInstalled) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
-    execSync(
-      `npm install ${dependency}@${packageJson.fallbackDependencies[dependency]}`
-    )
+    const fallbackDependency = fallbackDependencies[dependency]
+    if (Array.isArray(fallbackDependency)) {
+      for (let version of fallbackDependency) {
+        try {
+          const packageToInstall = version.includes('@')
+            ? version
+            : `${dependency}@${fallbackDependency}`
+          execSync(`npm install ${packageToInstall}`)
+          break
+        } catch (e) {
+          consola.error(`Failed to install ${dependency} : ${version}`)
+        }
+      }
+    } else if (typeof fallbackDependency === 'string') {
+      try {
+        const packageToInstall = fallbackDependency.includes('@')
+          ? fallbackDependency
+          : `${dependency}@${fallbackDependency}`
+        execSync(`npm install ${packageToInstall}`)
+      } catch (e) {
+        consola.error(`Failed to install ${dependency} : ${fallbackDependency}`)
+      }
+    }
   }
 }
 
@@ -30,4 +50,3 @@ for (let path in files) {
     })
   }
 }
-

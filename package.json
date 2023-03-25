@@ -35,6 +35,9 @@
     "gsap": "npm:@gsap/shockingly@^3.11.5"
   },
   "fallbackDependencies": {
-    "gsap": "^3.11.5"
+    "gsap": [
+      "npm:@gsap/simply@^3.11.5",
+      "^3.11.5"
+    ]
   }
 }
