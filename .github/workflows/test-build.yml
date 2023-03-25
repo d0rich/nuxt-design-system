@@ -17,4 +17,5 @@ jobs:
         with:
           node-version: 16
       - run: npm install
+      - run: ls .node_modules/gsap
       - run: npm run generate
