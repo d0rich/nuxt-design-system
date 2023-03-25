@@ -1,12 +1,10 @@
-import { execSync } from 'node:child_process'
+// import { execSync } from 'node:child_process'
 import * as fs from 'fs'
-import consola from 'consola'
+// import consola from 'consola'
 
-const packageJson = JSON.parse(
-  fs.readFileSync('./package.json', { encoding: 'utf-8' })
-)
-
-console.log(process.env.GSAP_TOKEN)
+// const packageJson = JSON.parse(
+//   fs.readFileSync('./package.json', { encoding: 'utf-8' })
+// )
 
 // Check if dependencies folders exist
 // for (let dependency in packageJson.optionalDependencies) {
