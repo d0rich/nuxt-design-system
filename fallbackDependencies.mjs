@@ -8,29 +8,29 @@ const packageJson = JSON.parse(
 
 // Check if dependencies folders exist
 for (let dependency in packageJson.optionalDependencies) {
-  const isInstalled = fs.existsSync(`./node_modules/${dependency}`)
-  if (!isInstalled) {
+  function isInstalled() {
+    return fs.existsSync(`./node_modules/${dependency}`)
+  }
+  if (!isInstalled()) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
     const fallbackDependency = packageJson.fallbackDependencies[dependency]
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
-        try {
-          const packageToInstall = `${dependency}@${version}`
-          execSync(`npm install ${packageToInstall}`)
+        const packageToInstall = `${dependency}@${version}`
+        execSync(`npm install ${packageToInstall} --no-save`)
+        if (isInstalled()) {
           consola.info(`${packageToInstall} is installed`)
           break
-        } catch (e) {
-          consola.error(`Failed to install ${dependency} : ${version}`)
         }
+        consola.error(`Failed to install ${packageToInstall}`)
       }
     } else if (typeof fallbackDependency === 'string') {
-      try {
-        const packageToInstall = fallbackDependency.includes('@')
-          ? fallbackDependency
-          : `${dependency}@${fallbackDependency}`
-        execSync(`npm install ${packageToInstall}`)
-      } catch (e) {
-        consola.error(`Failed to install ${dependency} : ${fallbackDependency}`)
+      const packageToInstall = `${dependency}@${fallbackDependency}`
+      execSync(`npm install ${packageToInstall} --no-save`)
+      if (isInstalled()) {
+        consola.info(`${packageToInstall} is installed`)
+      } else {
+        consola.error(`Failed to install ${packageToInstall}`)
       }
     }
   }
