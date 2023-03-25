@@ -29,16 +29,10 @@
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
+    "gsap": "npm:@gsap/shockingly@^3.11.5",
     "nuxt-icon": "^0.3.2"
   },
   "optionalDependencies": {
-    "gsap": "npm:@gsap/business@^3.11.5"
-  },
-  "fallbackDependencies": {
-    "gsap": [
-      "npm:@gsap/shockingly@^3.11.5",
-      "npm:@gsap/simply@^3.11.5",
-      "^3.11.5"
-    ]
+    "gsap": "^3.11.5"
   }
 }
