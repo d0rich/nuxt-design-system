@@ -1,3 +1,4 @@
+// TODO: replace when https://github.com/vuejs/core/issues/5844 is fixed
 export const useSafeOnMounted = (
   element: Ref<HTMLElement>,
   listener: () => void,
