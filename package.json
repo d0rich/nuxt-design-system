@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "main": "./nuxt.config.ts",
   "scripts": {
     "postinstall": "node fallbackDependencies.mjs",
