@@ -1,7 +1,7 @@
 /**
  * Representation of point coordinates.
  */
-export type Coords = {
+type Coords = {
   x: number
   y: number
 }
@@ -10,7 +10,7 @@ export type Coords = {
  *  Representation of line edge, where right and left points
  *  are on the opposite sides of the same corner.
  */
-export type LineEdge = {
+type LineEdge = {
   right: Coords
   left: Coords
 }
