@@ -1,3 +1,20 @@
+/**
+ * Representation of point coordinates.
+ */
+export type Coords = {
+  x: number
+  y: number
+}
+
+/**
+ *  Representation of line edge, where right and left points
+ *  are on the opposite sides of the same corner.
+ */
+export type LineEdge = {
+  right: Coords
+  left: Coords
+}
+
 export const usePolygonAnimationUtils = () => ({
   generatePolygonLineKeyframes,
   generatePolygonPointsKeyframes,
@@ -7,16 +24,6 @@ export const usePolygonAnimationUtils = () => ({
   createLineEdgeFromArray,
   createLineFromArray
 })
-
-type Coords = {
-  x: number
-  y: number
-}
-
-type LineEdge = {
-  right: Coords
-  left: Coords
-}
 
 /**
  *
