@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "main": "./nuxt.config.ts",
   "scripts": {
     "postinstall": "node fallbackDependencies.mjs",
@@ -32,11 +32,10 @@
     "nuxt-icon": "^0.3.2"
   },
   "optionalDependencies": {
-    "gsap": "npm:@gsap/business@^3.11.5"
+    "gsap": "npm:@gsap/shockingly@^3.11.5"
   },
   "fallbackDependencies": {
     "gsap": [
-      "npm:@gsap/shockingly@^3.11.5",
       "npm:@gsap/simply@^3.11.5",
       "^3.11.5"
     ]
