@@ -1,0 +1,39 @@
+name: Build & Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  # schedule:
+  #   - cron: "0 3 * * *"
+
+env:
+  GSAP_TOKEN: ${{secrets.GSAP_TOKEN}}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Installing packages
+        run: npm install
+
+      - name: Build Nuxt 3 static site
+        run: npm run generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          commit_message: 'Automatic deploy: ${{ github.event.head_commit.message }}'
