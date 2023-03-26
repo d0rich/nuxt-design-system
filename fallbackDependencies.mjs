@@ -1,50 +1,70 @@
 import { execSync } from 'node:child_process'
 import * as fs from 'fs'
+import { resolve, sep, join } from 'node:path'
 import consola from 'consola'
 
+// Read current package.json
 const packageJson = JSON.parse(
   fs.readFileSync('./package.json', { encoding: 'utf-8' })
 )
 
+// Calculate root project for case if nuxt-design-system is dependency
+const currentDir = resolve()
+const firstNodeModules = currentDir
+  .split(sep)
+  .findIndex((section) => section === 'node_modules')
+const root = currentDir
+  .split(sep)
+  .slice(0, firstNodeModules === -1 ? undefined : firstNodeModules)
+  .join(sep)
+
 // Check if dependencies folders exist
 for (let dependency in packageJson.optionalDependencies) {
   function isInstalled() {
-    return fs.existsSync(`./node_modules/${dependency}`)
+    return fs.existsSync(join(root, `./node_modules/${dependency}`))
   }
+
+  function install(packageToInstall) {
+    execSync(`npm install ${packageToInstall} --no-save`, {
+      cwd: root
+    })
+
+    const isInstalledResult = isInstalled()
+    if (isInstalledResult) {
+      consola.info(`${packageToInstall} is installed`)
+    } else {
+      consola.error(`Failed to install ${packageToInstall}`)
+    }
+    return isInstalledResult
+  }
+
   if (!isInstalled()) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
     const fallbackDependency = packageJson.fallbackDependencies[dependency]
+
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
-        const packageToInstall = `${dependency}@${version}`
-        execSync(`npm install ${packageToInstall} --no-save`)
-        if (isInstalled()) {
-          consola.info(`${packageToInstall} is installed`)
-          break
-        }
-        consola.error(`Failed to install ${packageToInstall}`)
+        const installResult = install(`${dependency}@${version}`)
+        if (installResult) break
       }
     } else if (typeof fallbackDependency === 'string') {
-      const packageToInstall = `${dependency}@${fallbackDependency}`
-      execSync(`npm install ${packageToInstall} --no-save`)
-      if (isInstalled()) {
-        consola.info(`${packageToInstall} is installed`)
-      } else {
-        consola.error(`Failed to install ${packageToInstall}`)
-      }
+      install(`${dependency}@${fallbackDependency}`)
     }
   }
 }
 
 // Manually create files to avoid Rollup error
+consola.info('Creating files fallbacks')
 const files = {
   './node_modules/gsap/MorphSVGPlugin.js': 'export const MorphSVGPlugin = {}'
 }
 for (let path in files) {
-  if (!fs.existsSync(path)) {
-    const dirPath = path.split('/').slice(0, -1).join('/')
+  const absPath = join(root, path)
+  if (!fs.existsSync(absPath)) {
+    consola.info(`Writing ${absPath}`)
+    const dirPath = join(absPath, '..')
     if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true })
-    fs.writeFileSync(path, files[path], {
+    fs.writeFileSync(absPath, files[path], {
       encoding: 'utf-8'
     })
   }
