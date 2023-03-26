@@ -1,4 +1,4 @@
-name: Build
+name: Test Build
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
 
 jobs:
   test-build:
-    name: Publish to NPM
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,5 +17,5 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: ls ./node_modules/gsap
       - run: npm run generate
+      - run: npm run test
