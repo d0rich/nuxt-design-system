@@ -1,3 +1,21 @@
+/**
+ * This script was used as `postinstall` script to install fallback GSAP if payed one is not available.
+ * But it seems project scoped `.npmrc` can't be acessed if this repository is used as dependency.
+ *
+ * Code for package.json
+ * ```
+ * "optionalDependencies": {
+ *  "gsap": "npm:@gsap/shockingly@^3.11.5"
+ *  },
+ *  "fallbackDependencies": {
+ *    "gsap": [
+ *      "npm:@gsap/simply@^3.11.5",
+ *      "^3.11.5"
+ *    ]
+ *  }
+ * ```
+ */
+
 import { execSync } from 'node:child_process'
 import * as fs from 'fs'
 import { resolve, sep, join } from 'node:path'

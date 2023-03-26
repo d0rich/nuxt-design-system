@@ -3,7 +3,6 @@
   "version": "0.3.8",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "postinstall": "node fallbackDependencies.mjs",
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
@@ -24,6 +23,7 @@
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vitest": "^0.0.56",
+    "gsap": "npm:@gsap/shockingly@^3.11.5",
     "nuxt": "^3.3.1",
     "playwright": "^1.32.1",
     "prettier": "^2.8.4",
@@ -39,12 +39,9 @@
     "nuxt-icon": "^0.3.2"
   },
   "optionalDependencies": {
-    "gsap": "npm:@gsap/shockingly@^3.11.5"
+    "gsap": "^3.11.5"
   },
-  "fallbackDependencies": {
-    "gsap": [
-      "npm:@gsap/simply@^3.11.5",
-      "^3.11.5"
-    ]
+  "peerDependencies": {
+    "gsap": "^3.11.5"
   }
 }
