@@ -38,7 +38,7 @@
     "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
     "nuxt-icon": "^0.3.2",
-    "gsap": "^3.11.5"
+    "gsap": "npm:@gsap/shockingly@^3.11.5"
   },
   "optionalDependencies": {
     "gsap": "^3.11.5"
