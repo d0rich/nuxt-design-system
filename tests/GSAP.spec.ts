@@ -11,7 +11,9 @@ describe('Test GSAP on page', async () => {
     await page.goto(url('/'), {
       waitUntil: 'networkidle'
     })
-    const morphSVGTypeHandle = await page.evaluateHandle(() => Promise.resolve(typeof window?.gsap?.plugins?.morphSVG))
+    const morphSVGTypeHandle = await page.evaluateHandle(() =>
+      Promise.resolve(typeof window?.gsap?.plugins?.morphSVG)
+    )
     const morphSVGType = await morphSVGTypeHandle.jsonValue()
     expect(morphSVGType).toBe('function')
   })

@@ -12,7 +12,7 @@
     "@nuxtjs/eslint-config-typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["jest"],
+  "plugins": ["vitest"],
   "rules": {
     "semi": ["error", "never"],
     "quotes": ["error", "single"],
