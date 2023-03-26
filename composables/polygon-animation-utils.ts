@@ -69,7 +69,6 @@ function generatePolygonPointsKeyframes(line: LineEdge[]): Coords[][] {
   return result
 }
 
-
 /**
  *
  * Apply animation to each point of line.
