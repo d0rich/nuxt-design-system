@@ -21,10 +21,10 @@ import * as fs from 'fs'
 import { resolve, sep, join } from 'node:path'
 import consola from 'consola'
 
-// Read current package.json
-const packageJson = JSON.parse(
-  fs.readFileSync('./package.json', { encoding: 'utf-8' })
-)
+// // Read current package.json
+// const packageJson = JSON.parse(
+//   fs.readFileSync('./package.json', { encoding: 'utf-8' })
+// )
 
 // Calculate root project for case if nuxt-design-system is dependency
 const currentDir = resolve()
@@ -36,40 +36,40 @@ const root = currentDir
   .slice(0, firstNodeModules === -1 ? undefined : firstNodeModules)
   .join(sep)
 
-// Check if dependencies folders exist
-for (let dependency in packageJson.optionalDependencies) {
-  function isInstalled() {
-    return fs.existsSync(join(root, `./node_modules/${dependency}`))
-  }
+// // Check if dependencies folders exist
+// for (let dependency in packageJson.optionalDependencies) {
+//   function isInstalled() {
+//     return fs.existsSync(join(root, `./node_modules/${dependency}`))
+//   }
 
-  function install(packageToInstall) {
-    execSync(`npm install ${packageToInstall} --no-save`, {
-      cwd: root
-    })
+//   function install(packageToInstall) {
+//     execSync(`npm install ${packageToInstall} --no-save`, {
+//       cwd: root
+//     })
 
-    const isInstalledResult = isInstalled()
-    if (isInstalledResult) {
-      consola.info(`${packageToInstall} is installed`)
-    } else {
-      consola.error(`Failed to install ${packageToInstall}`)
-    }
-    return isInstalledResult
-  }
+//     const isInstalledResult = isInstalled()
+//     if (isInstalledResult) {
+//       consola.info(`${packageToInstall} is installed`)
+//     } else {
+//       consola.error(`Failed to install ${packageToInstall}`)
+//     }
+//     return isInstalledResult
+//   }
 
-  if (!isInstalled()) {
-    consola.info(`Installing ${dependency} from fallbackDependencies`)
-    const fallbackDependency = packageJson.fallbackDependencies[dependency]
+//   if (!isInstalled()) {
+//     consola.info(`Installing ${dependency} from fallbackDependencies`)
+//     const fallbackDependency = packageJson.fallbackDependencies[dependency]
 
-    if (Array.isArray(fallbackDependency)) {
-      for (let version of fallbackDependency) {
-        const installResult = install(`${dependency}@${version}`)
-        if (installResult) break
-      }
-    } else if (typeof fallbackDependency === 'string') {
-      install(`${dependency}@${fallbackDependency}`)
-    }
-  }
-}
+//     if (Array.isArray(fallbackDependency)) {
+//       for (let version of fallbackDependency) {
+//         const installResult = install(`${dependency}@${version}`)
+//         if (installResult) break
+//       }
+//     } else if (typeof fallbackDependency === 'string') {
+//       install(`${dependency}@${fallbackDependency}`)
+//     }
+//   }
+// }
 
 // Manually create files to avoid Rollup error
 consola.info('Creating files fallbacks')

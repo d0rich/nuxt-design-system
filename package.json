@@ -3,6 +3,7 @@
   "version": "0.3.8",
   "main": "./nuxt.config.ts",
   "scripts": {
+    "postinstall": "node fallbackDependencies.mjs",
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
