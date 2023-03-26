@@ -11,27 +11,29 @@ for (let dependency in packageJson.optionalDependencies) {
   function isInstalled() {
     return fs.existsSync(`./node_modules/${dependency}`)
   }
+
+  function install(packageToInstall) {
+    execSync(`npm install ${packageToInstall} --no-save`)
+    const isInstalledResult = isInstalled()
+    if (isInstalledResult) {
+      consola.info(`${packageToInstall} is installed`)
+    } else {
+      consola.error(`Failed to install ${packageToInstall}`)
+    }
+    return isInstalledResult
+  }
+
   if (!isInstalled()) {
     consola.info(`Installing ${dependency} from fallbackDependencies`)
     const fallbackDependency = packageJson.fallbackDependencies[dependency]
+
     if (Array.isArray(fallbackDependency)) {
       for (let version of fallbackDependency) {
-        const packageToInstall = `${dependency}@${version}`
-        execSync(`npm install ${packageToInstall} --no-save`)
-        if (isInstalled()) {
-          consola.info(`${packageToInstall} is installed`)
-          break
-        }
-        consola.error(`Failed to install ${packageToInstall}`)
+        const installResult = install(`${dependency}@${version}`)
+        if (installResult) break
       }
     } else if (typeof fallbackDependency === 'string') {
-      const packageToInstall = `${dependency}@${fallbackDependency}`
-      execSync(`npm install ${packageToInstall} --no-save`)
-      if (isInstalled()) {
-        consola.info(`${packageToInstall} is installed`)
-      } else {
-        consola.error(`Failed to install ${packageToInstall}`)
-      }
+      install(`${dependency}@${fallbackDependency}`)
     }
   }
 }
