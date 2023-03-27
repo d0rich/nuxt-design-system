@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.3.10",
+  "version": "0.4.0",
   "main": "./nuxt.config.ts",
   "scripts": {
     "postinstall": "node fallbackDependencies.mjs",
@@ -36,8 +36,8 @@
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
-    "gsap": "npm:@gsap/shockingly@^3.11.5",
-    "nuxt-icon": "^0.3.2"
+    "nuxt-icon": "^0.3.2",
+    "gsap": "npm:@gsap/shockingly@^3.11.5"
   },
   "optionalDependencies": {
     "gsap": "^3.11.5"
