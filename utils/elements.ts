@@ -1,9 +1,4 @@
-export const useElementsUtils = () => ({
-  getAbsoluteBoundingsGetters,
-  getAbsoluteBoundings
-})
-
-function getAbsoluteBoundingsGetters(
+export function getAbsoluteBoundingsGetters(
   el: Ref<Element | null>,
   correlations: { x?: () => number; y?: () => number } = {}
 ) {
@@ -27,7 +22,7 @@ function getAbsoluteBoundingsGetters(
   }
 }
 
-function getAbsoluteBoundings(el: Ref<Element | null>) {
+export function getAbsoluteBoundings(el: Ref<Element | null>) {
   const getters = getAbsoluteBoundingsGetters(el)
   return {
     top: getters.top(),

@@ -1,7 +1,7 @@
 /**
  * Representation of point coordinates.
  */
-type Coords = {
+export type Coords = {
   x: number
   y: number
 }
@@ -10,20 +10,10 @@ type Coords = {
  *  Representation of line edge, where right and left points
  *  are on the opposite sides of the same corner.
  */
-type LineEdge = {
+export type LineEdge = {
   right: Coords
   left: Coords
 }
-
-export const usePolygonAnimationUtils = () => ({
-  generatePolygonLineKeyframes,
-  generatePolygonPointsKeyframes,
-  applyLinePerPointAnimation,
-  applyStaticPoints,
-  createCoordsFromArray,
-  createLineEdgeFromArray,
-  createLineFromArray
-})
 
 /**
  *
@@ -32,7 +22,7 @@ export const usePolygonAnimationUtils = () => ({
  * @param line
  * @returns Sets of keyframes for each polygon point
  */
-function generatePolygonLineKeyframes(line: LineEdge[]): Coords[][] {
+export function generatePolygonLineKeyframes(line: LineEdge[]): Coords[][] {
   return line.map((_, index, edges) => {
     const leftPoints = edges.reduce((points, edge, currentIndex) => {
       if (currentIndex > index) {
@@ -61,7 +51,7 @@ function generatePolygonLineKeyframes(line: LineEdge[]): Coords[][] {
  * @param line
  * @returns Set of keyframes for the whole line polygon
  */
-function generatePolygonPointsKeyframes(line: LineEdge[]): Coords[][] {
+export function generatePolygonPointsKeyframes(line: LineEdge[]): Coords[][] {
   const lineKfs = generatePolygonLineKeyframes(line)
   const keyframesCount = lineKfs.length
   const pointsCount = lineKfs[0].length
@@ -85,7 +75,7 @@ function generatePolygonPointsKeyframes(line: LineEdge[]): Coords[][] {
  * @param svgPolygon <polygon> element in svg image which will be animated line
  * @param animationCallback apply keyframes to specific points inside callback
  */
-function applyLinePerPointAnimation(
+export function applyLinePerPointAnimation(
   line: LineEdge[],
   svgContainer: SVGSVGElement,
   svgPolygon: SVGPolygonElement,
@@ -107,7 +97,7 @@ function applyLinePerPointAnimation(
  * @param svgContainer <svg> element which line all figures
  * @param svgPolygon <polygon> element in svg image which will be line
  */
-function applyStaticPoints(
+export function applyStaticPoints(
   line: LineEdge[],
   svgContainer: SVGSVGElement,
   svgPolygon: SVGPolygonElement
@@ -122,7 +112,7 @@ function applyStaticPoints(
   }
 }
 
-function createCoordsFromArray(coordsAsArray: number[]): Coords {
+export function createCoordsFromArray(coordsAsArray: number[]): Coords {
   if (coordsAsArray.length !== 2)
     throw new Error(
       'Array should contain 2 numbers in order to be translated into coords'
@@ -133,7 +123,7 @@ function createCoordsFromArray(coordsAsArray: number[]): Coords {
   }
 }
 
-function createLineEdgeFromArray(edgeAsArray: number[][]): LineEdge {
+export function createLineEdgeFromArray(edgeAsArray: number[][]): LineEdge {
   if (edgeAsArray.length !== 2)
     throw new Error(
       'Array should contain 2 elements in order to be translated into LineEdge'
@@ -144,6 +134,6 @@ function createLineEdgeFromArray(edgeAsArray: number[][]): LineEdge {
   }
 }
 
-function createLineFromArray(lineAsArray: number[][][]): LineEdge[] {
+export function createLineFromArray(lineAsArray: number[][][]): LineEdge[] {
   return lineAsArray.map(createLineEdgeFromArray)
 }
