@@ -25,6 +25,9 @@ jobs:
       - name: Installing packages
         run: npm ci
 
+      - name: Prepare Nuxt
+        run: npx nuxi prepare
+
       - name: Test
         run: npm run test
 
