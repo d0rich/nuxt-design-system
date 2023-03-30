@@ -3,8 +3,6 @@ name: Build & Deploy
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
   # schedule:
   #   - cron: "0 3 * * *"
 
@@ -26,6 +24,9 @@ jobs:
 
       - name: Installing packages
         run: npm ci
+
+      - name: Test
+        run: npm run test
 
       - name: Build Nuxt 3 static site
         run: npm run generate
