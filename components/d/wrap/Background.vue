@@ -1,3 +1,40 @@
+<script lang="ts">
+export default {
+  name: 'DWrapBackground'
+}
+</script>
+
+<script setup lang="ts">
+import { type StyleValue } from 'vue'
+
+defineProps({
+  overlayClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: ''
+  },
+  overlayStyle: {
+    type: Object as () => StyleValue,
+    default: () => {}
+  },
+  dotsClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: ''
+  },
+  dotsStyle: {
+    type: Object as () => StyleValue,
+    default: () => {}
+  },
+  dots: {
+    type: Boolean,
+    default: false
+  },
+  tag: {
+    type: String,
+    default: 'div'
+  }
+})
+</script>
+
 <template>
   <Component :is="tag" class="mbg__main-container">
     <div class="mbg__relative-container">
@@ -17,40 +54,6 @@
     </div>
   </Component>
 </template>
-
-<script lang="ts">
-import { type StyleValue } from 'vue'
-
-export default defineComponent({
-  name: 'Background',
-  props: {
-    overlayClass: {
-      type: [String, Object as () => Record<string, boolean>],
-      default: ''
-    },
-    overlayStyle: {
-      type: Object as () => StyleValue,
-      default: () => {}
-    },
-    dotsClass: {
-      type: [String, Object as () => Record<string, boolean>],
-      default: ''
-    },
-    dotsStyle: {
-      type: Object as () => StyleValue,
-      default: () => {}
-    },
-    dots: {
-      type: Boolean,
-      default: false
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    }
-  }
-})
-</script>
 
 <style>
 .mbg__main-container {

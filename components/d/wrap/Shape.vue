@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DWrapShape'
+}
+</script>
+
 <script setup lang="ts">
 import { type StyleValue } from 'vue'
 
