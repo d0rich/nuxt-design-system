@@ -51,7 +51,7 @@ defineProps<{
 <!-- Global shapes -->
 <style>
 :root {
-  --shape-bubble: polygon(
+  --shape-bubble--right: polygon(
     0 calc(100% - 20px),
     20px calc(100% - 10px),
     25px calc(100% - 15px),
@@ -64,7 +64,24 @@ defineProps<{
     20px calc(100% - 45px),
     18px calc(100% - 25px)
   );
-  --shape-bubble-padding: 35px 45px 15px 50px;
+  --shape-bubble--right__padding: 35px 45px 15px 50px;
+}
+
+:root {
+  --shape-bubble--left: polygon(
+    100% calc(100% - 20px),
+    calc(100% - 20px) calc(100% - 10px),
+    calc(100% - 25px) calc(100% - 15px),
+    calc(100% - 45px) calc(100% - 5px),
+    calc(100% - 70px) calc(100% - 10px),
+    0 100%,
+    40px 0,
+    calc(100% - 45px) 30px,
+    calc(100% - 40px) calc(100% - 30px),
+    calc(100% - 20px) calc(100% - 45px),
+    calc(100% - 18px) calc(100% - 25px)
+  );
+  --shape-bubble--left__padding: 35px 50px 15px 45px;
 }
 
 :root {
