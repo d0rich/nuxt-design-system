@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DChip'
+}
+</script>
+
 <template>
   <span class="d-chip">
     <slot />

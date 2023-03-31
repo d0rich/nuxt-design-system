@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DBtn'
+}
+</script>
+
 <script setup lang="ts">
 import { type HighlightVariant } from './wrap'
 
