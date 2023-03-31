@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DCharacter'
+}
+</script>
+
 <script setup lang="ts">
 import gsap from 'gsap'
 
