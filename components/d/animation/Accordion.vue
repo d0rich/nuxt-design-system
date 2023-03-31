@@ -1,0 +1,69 @@
+<script lang="ts">
+export default {
+  name: 'DAnimationAccordion'
+}
+</script>
+
+<template>
+  <svg viewBox="0 0 630 210" xmlns="http://www.w3.org/2000/svg" class="d-animation-accordion">
+    <defs>
+      <DAnimationDefLetterD id="d-letter" />
+      <use id="d-section" href="#d-letter" transform="scale(0.33)" />
+    </defs>
+    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-section" class="d-animation-accordion__section" />
+  </svg>
+</template>
+
+<style>
+.d-animation-accordion > .d-animation-accordion__section {
+  --accordeon-section-min-posion: translate(calc(var(--accordion-section-count) * 50px), 0);
+  --accordeon-section-max-posion: translate(calc(var(--accordion-section-count) * 70px), 0);
+  transform: var(--accordeon-section-min-posion);
+  animation: d-animation-accordion-section-wiggle 10s ease-in-out infinite alternate calc((var(--accordion-section-count) - 1) * 1s);
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(2n + 1) {
+  @apply fill-white;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(2) {
+  --accordion-section-count: 1;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(3) {
+  --accordion-section-count: 2;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(4) {
+  --accordion-section-count: 3;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(5) {
+  --accordion-section-count: 4;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(6) {
+  --accordion-section-count: 5;
+}
+
+.d-animation-accordion > .d-animation-accordion__section:nth-child(7) {
+  --accordion-section-count: 6;
+}
+
+@keyframes d-animation-accordion-section-wiggle {
+  0% {
+    transform: var(--accordeon-section-min-posion);
+  }
+  50% {
+    transform: var(--accordeon-section-max-posion);
+  }
+  100% {
+    transform: var(--accordeon-section-min-posion);
+  }
+}
+</style>
