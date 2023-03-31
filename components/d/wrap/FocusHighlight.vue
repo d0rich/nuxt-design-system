@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DWrapShape'
+}
+</script>
+
 <script setup lang="ts">
 export type HighlightVariant =
   | 'negative-tile'

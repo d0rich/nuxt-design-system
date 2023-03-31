@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import gsap from 'gsap'
 
 import idle from '../../../assets/img/character/idle.webp'
@@ -16,6 +16,12 @@ import profiOutlineColor from '../../../assets/img/character/profi-outline-color
 
 export type CharacterPose = 'idle' | 'action' | 'profi'
 
+export default {
+  name: 'DCharacter'
+}
+</script>
+
+<script setup lang="ts">
 const props = defineProps({
   pose: {
     type: String as () => CharacterPose,

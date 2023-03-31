@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DStats'
+}
+</script>
+
 <script setup lang="ts">
 export type StatsProps = {
   groupTitle?: string

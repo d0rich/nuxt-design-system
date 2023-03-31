@@ -49,4 +49,3 @@ jobs:
           tag: 'v${{ needs.publish-npm.outputs.version }}'
           generateReleaseNotes: true
           draft: false
-
