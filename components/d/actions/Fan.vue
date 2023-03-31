@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DActionsFan'
+}
+</script>
+
 <script setup lang="ts">
 import { CSSProperties } from 'vue'
 
