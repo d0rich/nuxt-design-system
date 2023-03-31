@@ -1,12 +1,12 @@
 <script lang="ts">
+import { type StyleValue } from 'vue'
+
 export default {
   name: 'DWrapBackground'
 }
 </script>
 
 <script setup lang="ts">
-import { type StyleValue } from 'vue'
-
 defineProps({
   overlayClass: {
     type: [String, Object as () => Record<string, boolean>],

@@ -1,10 +1,4 @@
 <script lang="ts">
-export default {
-  name: 'DMask'
-}
-</script>
-
-<script setup lang="ts">
 import spider from '../../assets/img/masks/spider.webp'
 import spiderColor from '../../assets/img/masks/spider-color.webp'
 import spiderOutline from '../../assets/img/masks/spider-outline.webp'
@@ -18,6 +12,12 @@ import wolfColor from '../../assets/img/masks/wolf-color.webp'
 import wolfOutline from '../../assets/img/masks/wolf-outline.webp'
 import wolfOutlineColor from '../../assets/img/masks/wolf-outline-color.webp'
 
+export default {
+  name: 'DMask'
+}
+</script>
+
+<script setup lang="ts">
 export type MaskType = 'wolf' | 'owl' | 'spider'
 
 const props = defineProps({
@@ -44,13 +44,11 @@ const assets = {
   wolfOutlineColor
 }
 
-function getAsset (mask: MaskType) {
+function getAsset(mask: MaskType) {
   return assets[
     `${mask}${props.outline ? 'Outline' : ''}${props.color ? 'Color' : ''}`
   ]
 }
-
-
 </script>
 
 <template>

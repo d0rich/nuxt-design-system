@@ -1,12 +1,12 @@
 <script lang="ts">
+import { type StyleValue } from 'vue'
+
 export default {
   name: 'DWrapShape'
 }
 </script>
 
 <script setup lang="ts">
-import { type StyleValue } from 'vue'
-
 defineProps<{
   shapeClass?: string | Record<string, boolean>
   shapeStyle?: StyleValue

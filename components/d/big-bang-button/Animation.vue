@@ -1,12 +1,12 @@
 <script lang="ts">
+import gsap from 'gsap'
+
 export default {
   name: 'DBigBangButtonAnimation'
 }
 </script>
 
 <script setup lang="ts">
-import gsap from 'gsap'
-
 const paths = {
   first: 'M 0 0 C -489.471 -116.5 -526.692 -193.268 -563.913 -311.911',
   last: 'M 0 0 C 317.761 171.963 466.645 199.879 680.666 171.963',
