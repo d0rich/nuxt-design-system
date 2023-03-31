@@ -48,14 +48,14 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         </div>
         <div class="grid md:grid-cols-3 not-prose items-center">
           <DActionsFan
-            class="text-white py-20"
+            class="text-white py-48"
             side="left"
             :actions="fanItems"
             @action-focus="pose = $event"
           />
           <DCharacter :pose="pose" shape-class="fill-red-500" no-image />
           <DActionsFan
-            class="text-white py-20"
+            class="text-white py-48"
             side="right"
             :actions="fanItems"
             @action-focus="pose = $event"
@@ -64,7 +64,9 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
       </section>
       <section class="my-7">
         <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Animations</h2>
-        <DAnimationSpinner />
+        <div class="grid grid-cols-2">
+          <DAnimationSpinner />
+        </div>
       </section>
     </div>
   </main>
