@@ -11,15 +11,12 @@ const transformOrigin = '315 315'
 <template>
   <svg class="spinner" viewBox="0 0 630 630" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <DAnimationDefLetterD id="d-blade" transform="scale(0.5)" :transform-origin="transformOrigin" />
-      <g id="d-blade--shadow">
-        <use href="#base" transform="translate( -10 10 )" class="fill-black" />
-        <use href="#base" class="fill-white" />
-      </g>
+      <DAnimationDefLetterD id="d-letter" />
+      <use href="#d-letter" id="d-blade" transform="translate(0 -150) scale(0.5) rotate(220)" :transform-origin="transformOrigin" />
       <g id="spinner" class="d-animation-spinner__spinner" :transform-origin="transformOrigin">
-        <use href="#d-blade" transform="translate(0 -150) rotate(240)"  :transform-origin="transformOrigin" />
-        <use href="#d-blade" transform="translate(-129.9 75) rotate(120)"  :transform-origin="transformOrigin" />
-        <use href="#d-blade" transform="translate(129.9 75) rotate(300)"  :transform-origin="transformOrigin" />
+        <use href="#d-blade" transform="rotate(0)" :transform-origin="transformOrigin" />
+        <use href="#d-blade" transform="rotate(120)" :transform-origin="transformOrigin" />
+        <use href="#d-blade" transform="rotate(240)" :transform-origin="transformOrigin" />
       </g>
     </defs>
     <use href="#spinner" transform="translate( -20 20 )" class="fill-black" :transform-origin="transformOrigin" />
@@ -36,7 +33,7 @@ const transformOrigin = '315 315'
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
 </style>
