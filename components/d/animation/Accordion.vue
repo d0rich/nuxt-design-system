@@ -18,11 +18,15 @@ defineProps({
 </script>
 
 <template>
-  <svg viewBox="0 0 630 210" xmlns="http://www.w3.org/2000/svg" class="d-animation-accordion"
-  :style="{
-    '--d-accordion-wiggle-period': wigglePeriod + 's',
-    '--d-accordion-delay': delay + 's'
-  }">
+  <svg
+    viewBox="0 0 630 210"
+    xmlns="http://www.w3.org/2000/svg"
+    class="d-animation-accordion"
+    :style="{
+      '--d-accordion-wiggle-period': wigglePeriod + 's',
+      '--d-accordion-delay': delay + 's'
+    }"
+  >
     <defs>
       <DAnimationDefLetterD id="d-letter" />
       <use id="d-section" href="#d-letter" transform="scale(0.33)" />
@@ -38,10 +42,18 @@ defineProps({
 
 <style>
 .d-animation-accordion > .d-animation-accordion__section {
-  --accordeon-section-min-posion: translate(calc(var(--accordion-section-count) * 50px), 0);
-  --accordeon-section-max-posion: translate(calc(var(--accordion-section-count) * 70px), 0);
+  --accordeon-section-min-posion: translate(
+    calc(var(--accordion-section-count) * 50px),
+    0
+  );
+  --accordeon-section-max-posion: translate(
+    calc(var(--accordion-section-count) * 70px),
+    0
+  );
   transform: var(--accordeon-section-min-posion);
-  animation: d-animation-accordion-section-wiggle var(--d-accordion-wiggle-period) ease-in-out infinite alternate calc((var(--accordion-section-count) - 1) * var(--d-accordion-delay));
+  animation: d-animation-accordion-section-wiggle
+    var(--d-accordion-wiggle-period) ease-in-out infinite alternate
+    calc((var(--accordion-section-count) - 1) * var(--d-accordion-delay));
 }
 
 .d-animation-accordion > .d-animation-accordion__section:nth-child(2n + 1) {
