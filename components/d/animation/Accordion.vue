@@ -42,15 +42,15 @@ defineProps({
 
 <style>
 .d-animation-accordion > .d-animation-accordion__section {
-  --accordeon-section-min-posion: translate(
+  --accordion-section-min-posion: translate(
     calc(var(--accordion-section-count) * 50px),
     0
   );
-  --accordeon-section-max-posion: translate(
+  --accordion-section-max-posion: translate(
     calc(var(--accordion-section-count) * 70px),
     0
   );
-  transform: var(--accordeon-section-min-posion);
+  transform: var(--accordion-section-min-posion);
   animation: d-animation-accordion-section-wiggle
     var(--d-accordion-wiggle-period) ease-in-out infinite alternate
     calc((var(--accordion-section-count) - 1) * var(--d-accordion-delay));
@@ -86,13 +86,13 @@ defineProps({
 
 @keyframes d-animation-accordion-section-wiggle {
   0% {
-    transform: var(--accordeon-section-min-posion);
+    transform: var(--accordion-section-min-posion);
   }
   50% {
-    transform: var(--accordeon-section-max-posion);
+    transform: var(--accordion-section-max-posion);
   }
   100% {
-    transform: var(--accordeon-section-min-posion);
+    transform: var(--accordion-section-min-posion);
   }
 }
 </style>
