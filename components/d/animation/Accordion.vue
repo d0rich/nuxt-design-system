@@ -29,14 +29,14 @@ defineProps({
   >
     <defs>
       <DAnimationDefLetterD id="d-letter" />
-      <use id="d-section" href="#d-letter" transform="scale(0.33)" />
+      <use id="d-accordion-section" href="#d-letter" transform="scale(0.33)" />
     </defs>
-    <use href="#d-section" class="d-animation-accordion__section" />
-    <use href="#d-section" class="d-animation-accordion__section" />
-    <use href="#d-section" class="d-animation-accordion__section" />
-    <use href="#d-section" class="d-animation-accordion__section" />
-    <use href="#d-section" class="d-animation-accordion__section" />
-    <use href="#d-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
+    <use href="#d-accordion-section" class="d-animation-accordion__section" />
   </svg>
 </template>
 

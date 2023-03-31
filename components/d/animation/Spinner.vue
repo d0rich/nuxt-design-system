@@ -31,7 +31,7 @@ defineProps({
     <defs>
       <DAnimationDefLetterD id="d-letter" />
       <use
-        id="d-blade"
+        id="d-spinner-blade"
         href="#d-letter"
         class="d-animation-spinner__blade"
         :transform-origin="transformOrigin"
@@ -42,17 +42,17 @@ defineProps({
         :transform-origin="transformOrigin"
       >
         <use
-          href="#d-blade"
+          href="#d-spinner-blade"
           transform="rotate(0)"
           :transform-origin="transformOrigin"
         />
         <use
-          href="#d-blade"
+          href="#d-spinner-blade"
           transform="rotate(120)"
           :transform-origin="transformOrigin"
         />
         <use
-          href="#d-blade"
+          href="#d-spinner-blade"
           transform="rotate(240)"
           :transform-origin="transformOrigin"
         />
