@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DCardTitle'
+}
+</script>
+
 <template>
   <div class="card__title">
     <DWrapShape
