@@ -67,6 +67,7 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         <div class="grid grid-cols-2">
           <DAnimationSpinner />
           <DAnimationAccordion />
+          <DAnimationHypnosis />
         </div>
       </section>
     </div>

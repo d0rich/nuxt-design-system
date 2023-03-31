@@ -19,7 +19,7 @@ defineProps({
 
 <template>
   <svg
-    viewBox="0 0 630 210"
+    viewBox="0 0 630 630"
     xmlns="http://www.w3.org/2000/svg"
     class="d-animation-hypnosis"
     :style="{
@@ -29,31 +29,30 @@ defineProps({
   >
     <defs>
       <DAnimationDefLetterD id="d-letter" />
-      <use id="d-section" href="#d-letter" transform="scale(0.33)" />
+      <use id="d-hypnosis-section" href="#d-letter" />
     </defs>
-    <use href="#d-section" class="d-animation-hypnosis__section" />
-    <use href="#d-section" class="d-animation-hypnosis__section" />
-    <use href="#d-section" class="d-animation-hypnosis__section" />
-    <use href="#d-section" class="d-animation-hypnosis__section" />
-    <use href="#d-section" class="d-animation-hypnosis__section" />
-    <use href="#d-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
+    <use href="#d-hypnosis-section" class="d-animation-hypnosis__section" />
   </svg>
 </template>
 
 <style>
 .d-animation-hypnosis > .d-animation-hypnosis__section {
-  --hypnosis-section-min-posion: translate(
-    calc(var(--hypnosis-section-count) * 50px),
-    0
+  --hypnosis-section-min-posion: scale(
+    calc(var(--hypnosis-section-count) / 12)
   );
   --hypnosis-section-max-posion: translate(
-    calc(var(--hypnosis-section-count) * 70px),
-    0
+    calc(var(--hypnosis-section-count) / 6)
   );
   transform: var(--hypnosis-section-min-posion);
-  animation: d-animation-hypnosis-section-wiggle
-    var(--d-hypnosis-wiggle-period) ease-in-out infinite alternate
-    calc((var(--hypnosis-section-count) - 1) * var(--d-hypnosis-delay));
+  transform-origin: 315px 315px;
+  animation: d-animation-hypnosis-section-wiggle var(--d-hypnosis-wiggle-period)
+    ease-in-out infinite alternate
+    calc((var(--hypnosis-section-count) - 6) * -1 * var(--d-hypnosis-delay));
 }
 
 .d-animation-hypnosis > .d-animation-hypnosis__section:nth-child(2n + 1) {
