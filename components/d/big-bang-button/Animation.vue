@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DBigBangButtonAnimation'
+}
+</script>
+
 <script setup lang="ts">
 import gsap from 'gsap'
 

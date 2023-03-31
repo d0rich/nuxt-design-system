@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DBigBangButton'
+}
+</script>
+
 <script setup lang="ts">
 const emit = defineEmits(['click'])
 const props = defineProps({
