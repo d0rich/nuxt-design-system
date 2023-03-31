@@ -1,6 +1,12 @@
-<script setup lang="ts">
+<script lang="ts">
 import { type HighlightVariant } from './wrap'
 
+export default {
+  name: 'DBtn'
+}
+</script>
+
+<script setup lang="ts">
 const props = defineProps({
   to: {
     type: String,

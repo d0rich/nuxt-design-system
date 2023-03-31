@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DActionsList'
+}
+</script>
+
 <script setup lang="ts">
 export type ActionListItem<TEmit = any> = {
   title: string

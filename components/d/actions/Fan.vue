@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { CSSProperties } from 'vue'
 
 export type ActionFanItem<TEmit = any> = {
@@ -16,6 +16,12 @@ export type ActionFanItem<TEmit = any> = {
   }
 }
 
+export default {
+  name: 'DActionsFan'
+}
+</script>
+
+<script setup lang="ts">
 const props = defineProps({
   actions: {
     type: Array as () => ActionFanItem[],

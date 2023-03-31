@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: 'DPagination'
+}
+</script>
+
 <script setup lang="ts">
 const props = defineProps({
   currentPage: {

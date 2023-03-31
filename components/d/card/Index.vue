@@ -1,3 +1,18 @@
+<script lang="ts">
+export default {
+  name: 'DCard'
+}
+</script>
+
+<script setup lang="ts">
+defineProps({
+  mode: {
+    type: String as () => 'default' | 'homepage-story' | 'homepage-skills',
+    default: 'default'
+  }
+})
+</script>
+
 <template>
   <DWrapShape
     shape-class="card__bg"
@@ -12,18 +27,6 @@
     </div>
   </DWrapShape>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  props: {
-    mode: {
-      type: String as () => 'default' | 'homepage-story' | 'homepage-skills',
-      default: 'default'
-    }
-  },
-  setup() {}
-})
-</script>
 
 <style>
 :root {

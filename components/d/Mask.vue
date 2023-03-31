@@ -1,13 +1,3 @@
-<template>
-  <div>
-    <Transition name="mask" mode="out-in">
-      <img v-if="mask === 'spider'" :src="getAsset('spider')" />
-      <img v-else-if="mask === 'owl'" :src="getAsset('owl')" />
-      <img v-else-if="mask === 'wolf'" :src="getAsset('wolf')" />
-    </Transition>
-  </div>
-</template>
-
 <script lang="ts">
 import spider from '../../assets/img/masks/spider.webp'
 import spiderColor from '../../assets/img/masks/spider-color.webp'
@@ -22,44 +12,54 @@ import wolfColor from '../../assets/img/masks/wolf-color.webp'
 import wolfOutline from '../../assets/img/masks/wolf-outline.webp'
 import wolfOutlineColor from '../../assets/img/masks/wolf-outline-color.webp'
 
+export default {
+  name: 'DMask'
+}
+</script>
+
+<script setup lang="ts">
 export type MaskType = 'wolf' | 'owl' | 'spider'
 
-export default defineComponent({
-  props: {
-    mask: {
-      type: String as () => MaskType,
-      required: true
-    },
-    outline: Boolean,
-    color: Boolean
+const props = defineProps({
+  mask: {
+    type: String as () => MaskType,
+    required: true
   },
-  setup(props) {
-    const assets = {
-      spider,
-      spiderColor,
-      spiderOutline,
-      spiderOutlineColor,
-      owl,
-      owlColor,
-      owlOutline,
-      owlOutlineColor,
-      wolf,
-      wolfColor,
-      wolfOutline,
-      wolfOutlineColor
-    }
-    return {
-      assets,
-      getAsset: (mask: MaskType) =>
-        assets[
-          `${mask}${props.outline ? 'Outline' : ''}${
-            props.color ? 'Color' : ''
-          }`
-        ]
-    }
-  }
+  outline: Boolean,
+  color: Boolean
 })
+
+const assets = {
+  spider,
+  spiderColor,
+  spiderOutline,
+  spiderOutlineColor,
+  owl,
+  owlColor,
+  owlOutline,
+  owlOutlineColor,
+  wolf,
+  wolfColor,
+  wolfOutline,
+  wolfOutlineColor
+}
+
+function getAsset(mask: MaskType) {
+  return assets[
+    `${mask}${props.outline ? 'Outline' : ''}${props.color ? 'Color' : ''}`
+  ]
+}
 </script>
+
+<template>
+  <div>
+    <Transition name="mask" mode="out-in">
+      <img v-if="mask === 'spider'" :src="getAsset('spider')" />
+      <img v-else-if="mask === 'owl'" :src="getAsset('owl')" />
+      <img v-else-if="mask === 'wolf'" :src="getAsset('wolf')" />
+    </Transition>
+  </div>
+</template>
 
 <style scoped>
 img {

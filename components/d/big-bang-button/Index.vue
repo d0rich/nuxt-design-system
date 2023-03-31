@@ -1,42 +1,47 @@
+<script lang="ts">
+export default {
+  name: 'DBigBangButton'
+}
+</script>
+
+<script setup lang="ts">
+const emit = defineEmits(['click'])
+const props = defineProps({
+  text: {
+    type: String,
+    required: true
+  },
+  tag: {
+    type: String,
+    default: 'button'
+  },
+  to: {
+    type: String,
+    default: undefined
+  }
+})
+
+const NuxtLink = resolveComponent('NuxtLink')
+
+const { text: animationText } = useDBigBangButtonUtils()
+
+const currentTag = computed(() => {
+  return props.to ? NuxtLink : props.tag
+})
+
+const symbols = computed(() => props.text.split(''))
+
+function onClick(event: MouseEvent) {
+  animationText.value = props.text
+  emit('click', event)
+}
+</script>
+
 <template>
   <Component :is="currentTag" :to="to" class="big-bang-button" @click="onClick">
     <span v-for="(symbol, index) in symbols" :key="index" v-text="symbol" />
   </Component>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  props: {
-    text: {
-      type: String,
-      required: true
-    },
-    tag: {
-      type: String,
-      default: 'button'
-    },
-    to: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['click'],
-  setup(props, ctx) {
-    const NuxtLink = resolveComponent('NuxtLink')
-    const { text: animationText } = useDBigBangButtonUtils()
-    return {
-      currentTag: computed(() => {
-        return props.to ? NuxtLink : props.tag
-      }),
-      symbols: computed(() => props.text.split('')),
-      onClick(event: MouseEvent) {
-        animationText.value = props.text
-        ctx.emit('click', event)
-      }
-    }
-  }
-})
-</script>
 
 <style>
 .big-bang-button {
