@@ -39,7 +39,7 @@ defineProps({
   <Component :is="tag" class="mbg__main-container">
     <div class="mbg__relative-container">
       <div class="mbg__layer" :class="overlayClass" :style="overlayStyle" />
-      <div class="mbg__layer">
+      <div class="mbg__layer overflow-hidden">
         <slot name="svg" />
       </div>
       <div
