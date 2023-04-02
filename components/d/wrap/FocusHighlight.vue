@@ -134,120 +134,75 @@ const currentComponent = computed(() => {
 
 <!-- list-item -->
 <style>
-.d-focus-hl:has(.d-focus-hl__hl--list-item) {
+.d-focus-hl:has(
+    .d-focus-hl__hl--list-item,
+    .d-focus-hl__hl--negative-list-item
+  ) {
   @apply w-full;
 }
 
-.d-focus-hl > .d-focus-hl__hl--list-item {
+.d-focus-hl
+  > :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 0%;
   height: 200%;
   top: -50%;
   left: 0;
   content: '';
-  clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
-  @apply absolute transition-all -z-10;
+  margin-left: -1.2em;
+  clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
+  @apply absolute transition-all;
 }
 
-.d-focus-hl:hover > .d-focus-hl__hl--list-item,
-*:focus .d-focus-hl__hl--list-item {
+.d-focus-hl > .d-focus-hl__hl--negative-list-item {
+  @apply backdrop-invert;
+}
+
+.d-focus-hl > .d-focus-hl__hl--list-item {
+  @apply -z-10;
+}
+
+:is(.d-focus-hl:hover, *:focus)
+  :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   opacity: 1;
   animation: hl--list-item-animation 0.3s infinite;
 }
 
-.d-focus-hl:hover > .d-focus-hl__hl--list-item {
+.d-focus-hl:hover
+  > :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 200%;
   height: 130%;
   top: -15%;
   left: -5%;
 }
 
-*:focus .d-focus-hl__hl--list-item {
+*:focus :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 220% !important;
   height: 200% !important;
   top: -50% !important;
   left: -5% !important;
 }
 
-.router-link-active
-  .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--list-item,
-.router-link-exact-active
-  .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--list-item {
+:is(
+    .router-link-active
+      .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link),
+    .router-link-exact-active
+      .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
+  )
+  :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   opacity: 1;
   width: 220% !important;
-  height: 200% !important;
-  top: -50% !important;
+  height: 130% !important;
+  top: -15% !important;
   left: -5% !important;
 }
 
 @keyframes hl--list-item-animation {
   0%,
   100% {
-    clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
+    clip-path: polygon(1em 0, 0% 100%, 100% 50%);
   }
   50% {
-    clip-path: polygon(1rem 10%, 0% 90%, 90% 50%);
-  }
-}
-</style>
-
-<!-- negative-list-item -->
-<style>
-.d-focus-hl:has(.d-focus-hl__hl--negative-list-item) {
-  @apply w-full;
-}
-
-.d-focus-hl > .d-focus-hl__hl--negative-list-item {
-  width: 0%;
-  height: 200%;
-  top: -50%;
-  left: 0;
-  content: '';
-  clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
-  @apply absolute backdrop-invert transition-all;
-}
-
-.d-focus-hl:hover > .d-focus-hl__hl--negative-list-item,
-*:focus .d-focus-hl__hl--negative-list-item {
-  opacity: 1;
-  animation: hl--negative-list-item-animation 0.3s infinite;
-}
-
-.d-focus-hl:hover > .d-focus-hl__hl--negative-list-item {
-  width: 200%;
-  height: 130%;
-  top: -15%;
-  left: -5%;
-}
-
-*:focus .d-focus-hl__hl--negative-list-item {
-  width: 220% !important;
-  height: 200% !important;
-  top: -50% !important;
-  left: -5% !important;
-}
-
-.router-link-active
-  .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-list-item,
-.router-link-exact-active
-  .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-list-item {
-  opacity: 1;
-  width: 200%;
-  height: 130%;
-  top: -15%;
-  left: -5%;
-}
-
-@keyframes hl--negative-list-item-animation {
-  0%,
-  100% {
-    clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
-  }
-  50% {
-    clip-path: polygon(1rem 10%, 0% 90%, 90% 50%);
+    clip-path: polygon(1em 10%, 0% 90%, 100% 50%);
   }
 }
 </style>
