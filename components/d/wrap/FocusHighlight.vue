@@ -144,6 +144,7 @@ const currentComponent = computed(() => {
   top: -50%;
   left: 0;
   content: '';
+  margin-left: -1.2rem;
   clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
   @apply absolute transition-all -z-10;
 }
@@ -205,6 +206,7 @@ const currentComponent = computed(() => {
   left: 0;
   content: '';
   clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
+  margin-left: -1.2rem;
   @apply absolute backdrop-invert transition-all;
 }
 
