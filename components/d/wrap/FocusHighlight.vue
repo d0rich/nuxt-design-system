@@ -20,6 +20,10 @@ const props = defineProps({
   tag: {
     type: String,
     default: 'div'
+  },
+  colorClass: {
+    type: [String, Object as () => Record<string, boolean>],
+    default: 'bg-red-600'
   }
 })
 
@@ -49,6 +53,7 @@ const currentComponent = computed(() => {
       <div
         v-else-if="variant === 'list-item'"
         class="d-focus-hl__hl--list-item"
+        :class="colorClass"
       />
       <div
         v-else-if="variant === 'negative-list-item'"
@@ -119,10 +124,10 @@ const currentComponent = computed(() => {
 @keyframes hl--negative-tile-animation {
   0%,
   100% {
-    transform: skew(0deg) rotate(12deg);
+    transform: skew(0deg) rotate(6deg);
   }
   50% {
-    transform: skew(-40deg) rotate(-28deg);
+    transform: skew(-40deg) rotate(-6deg) scaleX(0.8);
   }
 }
 </style>
@@ -140,7 +145,7 @@ const currentComponent = computed(() => {
   left: 0;
   content: '';
   clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
-  @apply absolute bg-red-600  transition-all -z-10;
+  @apply absolute transition-all -z-10;
 }
 
 .d-focus-hl:hover > .d-focus-hl__hl--list-item,
