@@ -36,6 +36,8 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
           <DBtn highlight="list-item">List highlight</DBtn>
           <DBtn highlight="list-item" color-class="bg-blue-600">Custom color</DBtn>
           <DBtn highlight="negative-list-item">List highlight (negative)</DBtn>
+          <DBtn no-rotate class="router-link-active">Active Link</DBtn>
+          <DBtn no-rotate class="router-link-active" highlight="negative-list-item">Active List Link</DBtn>
         </div>
       </section>
       <section class="my-7">
