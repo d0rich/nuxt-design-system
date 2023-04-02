@@ -237,10 +237,10 @@ const currentComponent = computed(() => {
   .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
   .d-focus-hl__hl--negative-list-item {
   opacity: 1;
-  width: 220% !important;
-  height: 200% !important;
-  top: -50% !important;
-  left: -5% !important;
+  width: 200%;
+  height: 130%;
+  top: -15%;
+  left: -5%;
 }
 
 @keyframes hl--negative-list-item-animation {
