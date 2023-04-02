@@ -134,13 +134,15 @@ const currentComponent = computed(() => {
 
 <!-- list-item -->
 <style>
-.d-focus-hl:has(.d-focus-hl__hl--list-item),
-.d-focus-hl:has(.d-focus-hl__hl--negative-list-item) {
+.d-focus-hl:has(
+    .d-focus-hl__hl--list-item,
+    .d-focus-hl__hl--negative-list-item
+  ) {
   @apply w-full;
 }
 
-.d-focus-hl > .d-focus-hl__hl--list-item,
-.d-focus-hl > .d-focus-hl__hl--negative-list-item {
+.d-focus-hl
+  > :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 0%;
   height: 200%;
   top: -50%;
@@ -159,42 +161,34 @@ const currentComponent = computed(() => {
   @apply -z-10;
 }
 
-.d-focus-hl:hover > .d-focus-hl__hl--list-item,
-*:focus .d-focus-hl__hl--list-item,
-.d-focus-hl:hover > .d-focus-hl__hl--negative-list-item,
-*:focus .d-focus-hl__hl--negative-list-item {
+:is(.d-focus-hl:hover, *:focus)
+  :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   opacity: 1;
   animation: hl--list-item-animation 0.3s infinite;
 }
 
-.d-focus-hl:hover > .d-focus-hl__hl--list-item,
-.d-focus-hl:hover > .d-focus-hl__hl--negative-list-item  {
+.d-focus-hl:hover
+  > :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 200%;
   height: 130%;
   top: -15%;
   left: -5%;
 }
 
-*:focus .d-focus-hl__hl--list-item,
-*:focus .d-focus-hl__hl--negative-list-item {
+*:focus :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   width: 220% !important;
   height: 200% !important;
   top: -50% !important;
   left: -5% !important;
 }
 
-.router-link-active
-  .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--list-item,
-.router-link-exact-active
-  .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--list-item,
-.router-link-active
-  .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-list-item,
-.router-link-exact-active
-  .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-list-item {
+:is(
+    .router-link-active
+      .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link),
+    .router-link-exact-active
+      .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
+  )
+  :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   opacity: 1;
   width: 220% !important;
   height: 130% !important;
