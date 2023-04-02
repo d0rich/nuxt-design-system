@@ -144,8 +144,8 @@ const currentComponent = computed(() => {
   top: -50%;
   left: 0;
   content: '';
-  margin-left: -1.2rem;
-  clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
+  margin-left: -1.2em;
+  clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
   @apply absolute transition-all -z-10;
 }
 
@@ -185,10 +185,10 @@ const currentComponent = computed(() => {
 @keyframes hl--list-item-animation {
   0%,
   100% {
-    clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
+    clip-path: polygon(1em 0, 0% 100%, 100% 50%);
   }
   50% {
-    clip-path: polygon(1rem 10%, 0% 90%, 90% 50%);
+    clip-path: polygon(1em 10%, 0% 90%, 100% 50%);
   }
 }
 </style>
@@ -205,8 +205,8 @@ const currentComponent = computed(() => {
   top: -50%;
   left: 0;
   content: '';
-  clip-path: polygon(1rem 0, 0% 100%, 100% 50%);
-  margin-left: -1.2rem;
+  clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
+  margin-left: -1.2em;
   @apply absolute backdrop-invert transition-all;
 }
 
@@ -237,19 +237,19 @@ const currentComponent = computed(() => {
   .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
   .d-focus-hl__hl--negative-list-item {
   opacity: 1;
-  width: 200%;
-  height: 130%;
-  top: -15%;
-  left: -5%;
+  width: 200% !important;
+  height: 130% !important;
+  top: -15% !important;
+  left: -5% !important;
 }
 
 @keyframes hl--negative-list-item-animation {
   0%,
   100% {
-    clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
+    clip-path: polygon(1em 0, 0% 100%, 100% 50%);
   }
   50% {
-    clip-path: polygon(1rem 10%, 0% 90%, 90% 50%);
+    clip-path: polygon(1em 10%, 0% 90%, 100% 50%);
   }
 }
 </style>
