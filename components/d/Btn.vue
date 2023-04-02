@@ -26,7 +26,8 @@ const props = defineProps({
   highlight: {
     type: String as () => HighlightVariant,
     default: undefined
-  }
+  },
+  colorClass: [String, Object as () => Record<string, boolean>]
 })
 
 const currentComponent = computed(() => {
@@ -48,6 +49,7 @@ const currentComponent = computed(() => {
       :variant="highlight"
       :link-exact="exact"
       :no-passive-link="noPassiveHl"
+      :color-class="colorClass"
     >
       <slot />
     </DWrapFocusHighlight>

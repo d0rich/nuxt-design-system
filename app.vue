@@ -30,9 +30,11 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         </h2>
         <div class="not-prose flex flex-wrap gap-3">
           <DBtn>Just Button</DBtn>
+          <DBtn no-rotate>No Rotate</DBtn>
           <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
           <DBtn highlight="negative-tile">Default highlight</DBtn>
           <DBtn highlight="list-item">List highlight</DBtn>
+          <DBtn highlight="list-item" color-class="bg-blue-600">Custom color</DBtn>
           <DBtn highlight="negative-list-item">List highlight (negative)</DBtn>
         </div>
       </section>
