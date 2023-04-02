@@ -1,8 +1,19 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "main": "./nuxt.config.ts",
-  "description": "Design system for d0rich's projects based on Nuxt 3 and Tailwind CSS",
+  "description": "🖼️ Design system for d0rich's projects based on Nuxt 3 and Tailwind CSS",
+  "keywords": [
+    "nuxt",
+    "nuxt3",
+    "nuxt-layers",
+    "gsap",
+    "design-system",
+    "design-system",
+    "tailwindcss",
+    "front-end",
+    "persona-5"
+  ],
   "repository": "https://github.com/d0rich/nuxt-design-system.git",
   "author": {
     "name": "Nikolay Dorofeev",
