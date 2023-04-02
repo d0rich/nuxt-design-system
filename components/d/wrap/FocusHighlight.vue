@@ -149,6 +149,7 @@ const currentComponent = computed(() => {
   left: 0;
   content: '';
   margin-left: -1.2em;
+  pointer-events: none;
   clip-path: polygon(1rem 0, 0% 100%, 90% 50%);
   @apply absolute transition-all;
 }
