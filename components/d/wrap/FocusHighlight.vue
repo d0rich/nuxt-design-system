@@ -176,8 +176,8 @@ const currentComponent = computed(() => {
   .d-focus-hl__hl--list-item {
   opacity: 1;
   width: 220% !important;
-  height: 200% !important;
-  top: -50% !important;
+  height: 130% !important;
+  top: -15% !important;
   left: -5% !important;
 }
 
