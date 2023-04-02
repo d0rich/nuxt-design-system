@@ -27,7 +27,11 @@ const props = defineProps({
     type: String as () => HighlightVariant,
     default: undefined
   },
-  colorClass: [String, Object as () => Record<string, boolean>]
+  colorClass: [String, Object as () => Record<string, boolean>],
+  textTransform: {
+    type: String as () => 'uppercase' | 'capitalize' | 'lowercase' | 'none',
+    default: 'uppercase'
+  }
 })
 
 const currentComponent = computed(() => {
@@ -41,7 +45,10 @@ const currentComponent = computed(() => {
     :is="currentComponent"
     class="d-btn"
     :class="{
-      '-rotate-6': !noRotate
+      '-rotate-6': !noRotate,
+      'uppercase': textTransform === 'uppercase',
+      'capitalize': textTransform === 'capitalize',
+      'lowercase': textTransform === 'lowercase'
     }"
     v-bind="props"
   >
@@ -58,6 +65,6 @@ const currentComponent = computed(() => {
 
 <style>
 .d-btn {
-  @apply font-extrabold uppercase select-none relative inline-block;
+  @apply font-extrabold select-none relative inline-block;
 }
 </style>
