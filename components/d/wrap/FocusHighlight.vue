@@ -124,10 +124,10 @@ const currentComponent = computed(() => {
 @keyframes hl--negative-tile-animation {
   0%,
   100% {
-    transform: skew(0deg) rotate(12deg);
+    transform: skew(0deg) rotate(6deg);
   }
   50% {
-    transform: skew(-40deg) rotate(-28deg);
+    transform: skew(-40deg) rotate(-6deg) scaleX(0.8);
   }
 }
 </style>
