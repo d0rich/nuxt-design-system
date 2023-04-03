@@ -31,21 +31,35 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         <div class="not-prose flex flex-wrap gap-3">
           <DBtn>Just Button</DBtn>
           <DBtn no-rotate>No Rotate</DBtn>
-          <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
-          <DBtn highlight="negative-tile">Default highlight</DBtn>
-          <DBtn highlight="list-item">List highlight</DBtn>
-          <DBtn highlight="list-item" color-class="bg-blue-600"
+        </div>
+        <div class="no-prose my-5">
+          <DBtn highlight="negative-tile" class="!block"
+            >Default highlight</DBtn
+          >
+          <DBtn highlight="list-item" class="!block">List highlight</DBtn>
+          <DBtn highlight="list-item" color-class="bg-blue-600" class="!block"
             >Custom color</DBtn
           >
-          <DBtn highlight="negative-list-item">List highlight (negative)</DBtn>
-          <DBtn no-rotate class="router-link-active">Active Link</DBtn>
+          <DBtn highlight="negative-list-item" class="!block"
+            >List highlight (negative)</DBtn
+          >
+          <DBtn
+            highlight="composite-list-item"
+            class="!block"
+            color-class="bg-white"
+            >List highlight (composite)</DBtn
+          >
+        </div>
+        <div class="no-prose my-5">
+          <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
+          <DBtn no-rotate class="router-link-active !block">Active Link</DBtn>
           <DBtn
             no-rotate
-            class="router-link-active"
+            class="router-link-active !block"
             highlight="negative-list-item"
             >Active List Link</DBtn
           >
-          <DBtn text-transform="none">No Text transform</DBtn>
+          <DBtn text-transform="none" class="!block">No Text transform</DBtn>
         </div>
       </section>
       <section class="my-7">
