@@ -16,8 +16,18 @@ const props = defineProps({
     type: String,
     default: undefined
   },
+  /**
+   * If true, the highlight will be shown only if the link is exact string a URL.
+   */
   exact: Boolean,
-  noPassiveHl: Boolean,
+  /**
+   * Turn off the highlight for active links.
+   */
+  noPassiveHighlight: Boolean,
+  /**
+   * Turn on the highlight even if the link is not active.
+   */
+  active: Boolean,
   noRotate: Boolean,
   tag: {
     type: String,
@@ -55,8 +65,9 @@ const currentComponent = computed(() => {
     <DWrapFocusHighlight
       :variant="highlight"
       :link-exact="exact"
-      :no-passive-link="noPassiveHl"
+      :no-passive-link="noPassiveHighlight"
       :color-class="colorClass"
+      :active="active"
     >
       <slot />
     </DWrapFocusHighlight>
