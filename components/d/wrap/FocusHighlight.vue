@@ -9,6 +9,7 @@ export type HighlightVariant =
   | 'negative-tile'
   | 'list-item'
   | 'negative-list-item'
+  | 'composite-list-item'
 
 const props = defineProps({
   linkExact: Boolean,
@@ -59,6 +60,10 @@ const currentComponent = computed(() => {
         v-else-if="variant === 'negative-list-item'"
         class="d-focus-hl__hl--negative-list-item"
       />
+      <template v-else-if="variant === 'composite-list-item'">
+        <div class="d-focus-hl__hl--list-item" :class="colorClass" />
+        <div class="d-focus-hl__hl--negative-list-item" />
+      </template>
       <slot />
     </Component>
   </DWrapShape>

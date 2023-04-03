@@ -38,6 +38,7 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
             >Custom color</DBtn
           >
           <DBtn highlight="negative-list-item">List highlight (negative)</DBtn>
+          <DBtn highlight="composite-list-item" color-class="bg-white">List highlight (composite)</DBtn>
           <DBtn no-rotate class="router-link-active">Active Link</DBtn>
           <DBtn
             no-rotate
