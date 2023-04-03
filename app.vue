@@ -52,9 +52,14 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         </div>
         <div class="no-prose my-5">
           <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
-          <DBtn no-rotate class="router-link-active !block">Active Link</DBtn>
+          <DBtn no-rotate active class="!block">Active Link</DBtn>
+          <DBtn no-rotate active class="!block" highlight="negative-list-item"
+            >Active List Link</DBtn
+          >
           <DBtn
             no-rotate
+            no-passive-highlight
+            active
             class="router-link-active !block"
             highlight="negative-list-item"
             >Active List Link</DBtn

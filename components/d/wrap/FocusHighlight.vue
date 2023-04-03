@@ -12,8 +12,18 @@ export type HighlightVariant =
   | 'composite-list-item'
 
 const props = defineProps({
+  /**
+   * If true, the highlight will be shown only if the link is exact string a URL.
+   */
   linkExact: Boolean,
+  /**
+   * Turn off the highlight for active links.
+   */
   noPassiveLink: Boolean,
+  /**
+   * Turn on the highlight even if the link is not active.
+   */
+  active: Boolean,
   variant: {
     type: String as () => HighlightVariant,
     default: 'negative-tile'
@@ -44,7 +54,8 @@ const currentComponent = computed(() => {
       :class="{
         'd-focus-hl--exact': linkExact,
         'd-focus-hl--not-exact': !linkExact,
-        'd-focus-hl--no-passive-link': noPassiveLink
+        'd-focus-hl--no-passive-link': noPassiveLink,
+        'd-focus-hl--active': active
       }"
     >
       <div
@@ -113,12 +124,16 @@ const currentComponent = computed(() => {
   left: -20% !important;
 }
 
-.router-link-active
-  .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-tile,
-.router-link-exact-active
-  .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
-  .d-focus-hl__hl--negative-tile {
+:is(
+    :is(
+        .router-link-active
+          .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link),
+        .router-link-exact-active
+          .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
+      ),
+    .d-focus-hl--active
+  )
+  :is(.d-focus-hl__hl--negative-tile) {
   opacity: 1;
   width: 120% !important;
   height: 120% !important;
@@ -189,10 +204,13 @@ const currentComponent = computed(() => {
 }
 
 :is(
-    .router-link-active
-      .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link),
-    .router-link-exact-active
-      .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
+    :is(
+        .router-link-active
+          .d-focus-hl--not-exact:not(.d-focus-hl--no-passive-link),
+        .router-link-exact-active
+          .d-focus-hl--exact:not(.d-focus-hl--no-passive-link)
+      ),
+    .d-focus-hl--active
   )
   :is(.d-focus-hl__hl--list-item, .d-focus-hl__hl--negative-list-item) {
   opacity: 1;
