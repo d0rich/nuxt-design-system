@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "main": "./nuxt.config.ts",
   "description": "🖼️ Design system for d0rich's projects based on Nuxt 3 and Tailwind CSS",
   "keywords": [
