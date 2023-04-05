@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'nuxt-icon'
   ],
+  nitro: {
+    prerender: {
+      routes: ['/CNAME']
+    }
+  },
   components: {
     dirs: [
       {
