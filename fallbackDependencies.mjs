@@ -101,7 +101,8 @@ for (let dependency in packageJson.dependencies) {
 // Manually create files to avoid Rollup error
 consola.info('Creating files fallbacks')
 const files = {
-  './node_modules/gsap/MorphSVGPlugin.js': 'export const MorphSVGPlugin = {}'
+  './node_modules/gsap/MorphSVGPlugin.js': 'export const MorphSVGPlugin = {}',
+  './node_modules/gsap/SplitText.js': 'export const SplitText = {}'
 }
 for (let path in files) {
   const absPath = join(root, path)
