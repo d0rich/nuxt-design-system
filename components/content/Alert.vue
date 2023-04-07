@@ -1,3 +1,12 @@
+<script setup lang="ts">
+defineProps({
+  type: {
+    type: String as () => 'info' | 'question' | 'warning',
+    default: 'info'
+  }
+})
+</script>
+
 <template>
   <DWrapShape class="d-alert" shape-class="d-alert__shape">
     <template #bg-overlay>
@@ -5,9 +14,9 @@
     </template>
     <div class="d-alert__body">
       <slot />
-      <svg viewBox="0 0 1067 1067" xmlns="http://www.w3.org/2000/svg" class="absolute w-20 top-0 left-0">
+      <svg viewBox="0 0 1067 1067" xmlns="http://www.w3.org/2000/svg" class="d-alert__sign">
         <!-- info -->
-        <g>
+        <g v-if="type === 'info'">
           <path
             d="M202.481,1025.68l427.138,-769.216l171.992,106.943l-461.057,689.584l-138.073,-27.311Z"
             style="fill: #fff"
@@ -17,8 +26,8 @@
             style="fill: #fff"
           />
         </g>
-        <!-- qustion -->
-        <g>
+        <!-- question -->
+        <g v-if="type === 'question'">
           <path
             d="M289.17,836.982l100.67,63.007l-27.42,149.27l-200.047,-83.328l126.797,-128.949Z"
             style="fill: #fff"
@@ -29,7 +38,7 @@
           />
         </g>
         <!-- warning -->
-        <g>
+        <g v-if="type === 'warning'">
           <path
             d="M304.988,722.034l335.792,-712.747l299.877,30.543l-514.204,743.146l-121.465,-60.942Z"
             style="fill: #fff"
@@ -61,5 +70,9 @@
 
 .d-alert__body {
   padding: var(--shape-card--dense__padding);
+}
+
+.d-alert__sign {
+  @apply absolute w-[5em] -top-[1.5em] -left-[1.5em] pointer-events-none;
 }
 </style>
