@@ -151,6 +151,18 @@ defineProps<{
     100% calc(100% - 2em),
     100% 1.5em
   );
-  --shape-card--dense_padding: 2em 0.5em 2.5em 1em;
+  --shape-card--dense__outline: polygon(
+    0.5em 0,
+    0.8em 0.3em,
+    0.4em calc(100% - 0.7em),
+    calc(100% - 0.3em) calc(100% - 2em),
+    calc(100% - 0.4em) 1.5em,
+    0.8em 0.3em,
+    0.5em 0,
+    100% 1em,
+    100% calc(100% - 1.8em),
+    0% 100%
+  );
+  --shape-card--dense__padding: 2em 0.5em 2.5em 1em;
 }
 </style>
