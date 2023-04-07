@@ -61,7 +61,7 @@ defineProps({
 
 <style>
 .d-alert {
-  @apply font-dialog text-black dark:text-white my-6;
+  @apply font-dialog text-black dark:text-white mb-6 mt-12;
 }
 
 .d-alert__shape {
