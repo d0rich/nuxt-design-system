@@ -139,6 +139,11 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
             quibusdam possimus aliquid earum adipisci tempore quidem molestiae
             distinctio quaerat reiciendis.
           </ContentProseBlockquote>
+          <ContentAlert>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+            quibusdam possimus aliquid earum adipisci tempore quidem molestiae
+            distinctio quaerat reiciendis.
+          </ContentAlert>
         </div>
       </section>
     </div>

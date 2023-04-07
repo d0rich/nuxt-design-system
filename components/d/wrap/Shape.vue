@@ -88,4 +88,9 @@ defineProps<{
   --shape-card: polygon(2em 0, 0% 100%, 100% calc(100% - 5em), 100% 4em);
   --shape-card-padding: 4.5em 0.5em 5.5em 2.5em;
 }
+
+:root {
+  --shape-card--dense: polygon(.5em 0, 0% 100%, 100% calc(100% - 2em), 100% 1.5em);
+  --shape-card--dense_padding: 2em 0.5em 2.5em 1em;
+}
 </style>
