@@ -11,7 +11,7 @@
 
 <style>
 .d-alert {
-  @apply font-dialog text-black dark:text-white;
+  @apply font-dialog text-black dark:text-white my-6;
 }
 
 .d-alert__shape {

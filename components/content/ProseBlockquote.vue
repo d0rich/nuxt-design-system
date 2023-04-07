@@ -15,7 +15,7 @@
 
 <style>
 .d-blockquote {
-  @apply font-dialog text-black dark:text-white;
+  @apply font-dialog text-black dark:text-white my-6;
 }
 
 .d-blockquote__body {
