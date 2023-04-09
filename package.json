@@ -22,16 +22,17 @@
   },
   "scripts": {
     "postinstall": "node fallbackDependencies.mjs",
+    "prepare": "nuxi prepare && nuxi prepate .playground/",
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore . --fix",
     "test": "vitest",
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "build": "nuxt build .playground/",
+    "dev": "nuxt dev .playground/",
+    "generate": "nuxt generate .playground/",
+    "preview": "nuxt preview .playground/"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^3.3.2",
