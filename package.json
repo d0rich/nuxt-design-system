@@ -22,7 +22,7 @@
   },
   "scripts": {
     "postinstall": "node fallbackDependencies.mjs",
-    "prepare": "npx nuxi prepare && npx nuxi prepare .playground/",
+    "prepare": "nuxt prepare && nuxt prepare .playground/",
     "lint:ts": "nuxi typecheck",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
