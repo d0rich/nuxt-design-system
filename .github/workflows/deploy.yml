@@ -39,5 +39,5 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./.playground/dist
           commit_message: 'Automatic deploy: ${{ github.event.head_commit.message }}'
