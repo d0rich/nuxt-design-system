@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { CharacterPose } from './components/d/character/Index.vue'
-import { ActionListItem } from './components/d/actions/List.vue'
-import { ActionFanItem } from './components/d/actions/Fan.vue'
+import type { CharacterPose, ActionFanItem, ActionListItem } from '../types'
 
 const pose = ref<CharacterPose>('action')
 const listItems = ref<ActionListItem<CharacterPose>[]>([
