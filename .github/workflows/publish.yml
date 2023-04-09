@@ -31,19 +31,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Check if version has been updated
-        id: check
-        uses: EndBug/version-check@v1
-        with:
-          diff-search: true
-
       - uses: rickstaa/action-create-tag@v1
-        if: steps.check.outputs.changed == 'true'
         with:
           tag: 'v${{ needs.publish-npm.outputs.version }}'
 
       - name: Create Release
-        if: steps.check.outputs.changed == 'true'
         uses: ncipollo/release-action@v1
         with:
           tag: 'v${{ needs.publish-npm.outputs.version }}'
