@@ -25,51 +25,8 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
     <B2Shapes />
     <B3Shadows />
     <B4SvgLines />
+    <B5Buttons />
     <div class="prose prose-lg mx-auto">
-      <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
-      <section class="my-7">
-        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">
-          FocusHighlight and Buttons
-        </h2>
-        <div class="not-prose flex flex-wrap gap-3">
-          <DBtn>Just Button</DBtn>
-          <DBtn no-rotate>No Rotate</DBtn>
-        </div>
-        <div class="no-prose my-5">
-          <DBtn highlight="negative-tile" class="!block"
-            >Default highlight</DBtn
-          >
-          <DBtn highlight="list-item" class="!block">List highlight</DBtn>
-          <DBtn highlight="list-item" color-class="bg-blue-600" class="!block"
-            >Custom color</DBtn
-          >
-          <DBtn highlight="negative-list-item" class="!block"
-            >List highlight (negative)</DBtn
-          >
-          <DBtn
-            highlight="composite-list-item"
-            class="!block"
-            color-class="bg-white"
-            >List highlight (composite)</DBtn
-          >
-        </div>
-        <div class="no-prose my-5">
-          <DBtn href="https://d0rich.me" target="_blank">Link Button</DBtn>
-          <DBtn no-rotate active class="!block">Active Link</DBtn>
-          <DBtn no-rotate active class="!block" highlight="negative-list-item"
-            >Active List Link</DBtn
-          >
-          <DBtn
-            no-rotate
-            no-passive-highlight
-            active
-            class="router-link-active !block"
-            highlight="negative-list-item"
-            >Active List Link</DBtn
-          >
-          <DBtn text-transform="none" class="!block">No Text transform</DBtn>
-        </div>
-      </section>
       <section class="my-7">
         <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Lists</h2>
         <div class="grid md:grid-cols-2 not-prose items-center">

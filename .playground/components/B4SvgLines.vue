@@ -89,7 +89,7 @@ onMounted(() => {
         <DCard class="max-w-md self-end">
           <DCardTitle>Switch color</DCardTitle>
           <p>Switch color on example.</p>
-          <DBtn @click="switchColor">Boop</DBtn>
+          <DBigBangButton class="underline" text="Boop" @click="switchColor" />
         </DCard>
 
         <DCard class="max-w-md">

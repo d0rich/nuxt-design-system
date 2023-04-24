@@ -3,4 +3,5 @@
     <Title>d0rich • Nuxt design system</Title>
   </Head>
   <NuxtPage />
+  <DBigBangButtonAnimation />
 </template>
