@@ -21,7 +21,7 @@ defineProps<{
     <div class="d-shape">
       <div class="d-shape__bg-filter" :class="filterClass" :style="filterStyle">
         <div class="d-shape__bg-wrapper">
-          <div class="d-shape__bg" :class="shapeClass" :style="shapeStyle" >
+          <div class="d-shape__bg" :class="shapeClass" :style="shapeStyle">
             <slot name="shape-content" />
           </div>
           <slot name="bg-overlay" />

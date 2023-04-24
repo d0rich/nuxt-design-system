@@ -97,13 +97,13 @@ const fifthStat = computed(() => statFromIndex(4))
         :key="skill"
         class="rounded text-white p-[.3em]"
         :class="{
-          'hidden': values[index] < 3,
+          hidden: values[index] < 3,
           'bg-blue-500 text-xs': values[index] === 3,
           'bg-blue-600 text-sm': values[index] === 4,
           'bg-blue-700 text-base': values[index] === 5
         }"
       >
-      {{ skill }}
+        {{ skill }}
       </span>
     </div>
     <div class="relative print:hidden">

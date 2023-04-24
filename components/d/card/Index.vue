@@ -17,7 +17,7 @@ defineProps({
 <template>
   <DWrapShape
     :shape-class="{
-      'card__bg': !dense,
+      card__bg: !dense,
       'card__bg--dense': dense
     }"
     :class="{
@@ -26,10 +26,12 @@ defineProps({
       card: mode === 'default'
     }"
   >
-    <div :class="{
-      'card__content': !dense,
-      'card__content--dense': dense
-    }">
+    <div
+      :class="{
+        card__content: !dense,
+        'card__content--dense': dense
+      }"
+    >
       <slot />
     </div>
   </DWrapShape>
@@ -52,7 +54,8 @@ defineProps({
 </style>
 
 <style>
-.card__content, .card__content--dense {
+.card__content,
+.card__content--dense {
   @apply md:text-lg print:p-0;
 }
 
@@ -81,7 +84,8 @@ defineProps({
   background: var(--d-card-x-ray--action__color);
 }
 
-.card__bg, .card__bg--dense {
+.card__bg,
+.card__bg--dense {
   @apply bg-white dark:bg-neutral-700
         print:bg-none;
 }
