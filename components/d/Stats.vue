@@ -9,7 +9,6 @@ export type StatsProps = {
   groupTitle?: string
   titles: string[]
   values: number[]
-  smallPrint: boolean
 }
 
 const props = defineProps<StatsProps>()
@@ -72,7 +71,7 @@ const fifthStat = computed(() => statFromIndex(4))
 
 <template>
   <figure class="max-w-full">
-    <div v-if="!smallPrint" class="hidden print:block">
+    <div class="stats__print-value">
       <div class="text-lg font-bold">{{ groupTitle }}</div>
       <div>
         <div
@@ -92,7 +91,7 @@ const fifthStat = computed(() => statFromIndex(4))
         </div>
       </div>
     </div>
-    <div v-else class="hidden print:flex flex-wrap gap-2 items-center">
+    <div class="stats__print-value--small">
       <span
         v-for="(skill, index) in titles"
         :key="skill"
@@ -430,5 +429,22 @@ const fifthStat = computed(() => statFromIndex(4))
   font-size: 80px;
   stroke-width: 20;
   stroke-linejoin: round;
+}
+</style>
+
+<style>
+.stats__print-value {
+  @apply hidden print:block;
+}
+.stats__print-value--small {
+  @apply hidden flex-wrap gap-2 items-center;
+}
+
+.small-print-stats .stats__print-value {
+  @apply print:hidden;
+}
+
+.small-print-stats .stats__print-value--small {
+  @apply print:flex;
 }
 </style>
