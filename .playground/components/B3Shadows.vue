@@ -12,13 +12,15 @@
           Shadows are implemented as TailwindCSS plugin. It's very easy to use.
         </DCard>
 
-        <DCard class="max-w-md self-end transition-all sharp-shadow ss-bl-5 ss-violet-500 hover:ss-tl-5 hover:ss-cyan-500">
+        <DCard
+          class="max-w-md self-end transition-all sharp-shadow ss-bl-5 ss-violet-500 hover:ss-tl-5 hover:ss-cyan-500"
+        >
           <DCardTitle>Animation (Hover me)</DCardTitle>
 
-          These shadows are also animatable! Hover this card to see it in action.
+          These shadows are also animatable! Hover this card to see it in
+          action.
         </DCard>
       </div>
-
     </div>
   </DWrapBackground>
 </template>
@@ -32,4 +34,3 @@ h1::first-letter {
   @apply bg-cyan-700;
 }
 </style>
-
