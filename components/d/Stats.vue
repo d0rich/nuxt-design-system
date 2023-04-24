@@ -12,6 +12,7 @@ export type StatsProps = {
 }
 
 const props = defineProps<StatsProps>()
+const smallPrintStats = true
 
 const fullStarPoints = ref<number[][]>([
   [500, 0], // 1
@@ -71,7 +72,7 @@ const fifthStat = computed(() => statFromIndex(4))
 
 <template>
   <figure class="max-w-full">
-    <div class="hidden print:block">
+    <div v-if="!smallPrintStats" class="hidden print:block">
       <div class="text-lg font-bold">{{ groupTitle }}</div>
       <div>
         <div
@@ -90,6 +91,21 @@ const fifthStat = computed(() => statFromIndex(4))
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="hidden print:flex flex-wrap gap-2 items-center">
+      <span
+        v-for="(skill, index) in titles"
+        :key="skill"
+        class="rounded text-white p-[.3em]"
+        :class="{
+          'hidden': values[index] < 3,
+          'bg-blue-500 text-xs': values[index] === 3,
+          'bg-blue-600 text-sm': values[index] === 4,
+          'bg-blue-700 text-base': values[index] === 5
+        }"
+      >
+      {{ skill }}
+      </span>
     </div>
     <div class="relative print:hidden">
       <svg viewBox="-500 -500 2000 2000" xmlns="http://www.w3.org/2000/svg">
