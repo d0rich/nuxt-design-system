@@ -23,6 +23,7 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
   <main class="">
     <B1Intro />
     <B2Shapes />
+    <B3Shadows />
     <div class="prose prose-lg mx-auto">
       <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
       <section class="my-7">
