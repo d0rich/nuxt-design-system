@@ -104,35 +104,6 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
         </div>
       </section>
       <section class="my-7">
-        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Shapes</h2>
-        <div class="grid grid-cols-2 items-center">
-          <DWrapShape
-            shape-class="bg-white"
-            :shape-style="{
-              clipPath: 'var(--shape-bubble--left)'
-            }"
-          >
-            <div style="padding: var(--shape-bubble--left__padding)">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-              quibusdam possimus aliquid earum adipisci tempore quidem molestiae
-              distinctio quaerat reiciendis.
-            </div>
-          </DWrapShape>
-          <DWrapShape
-            shape-class="bg-white"
-            :shape-style="{
-              clipPath: 'var(--shape-bubble--right)'
-            }"
-          >
-            <div style="padding: var(--shape-bubble--right__padding)">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-              quibusdam possimus aliquid earum adipisci tempore quidem molestiae
-              distinctio quaerat reiciendis.
-            </div>
-          </DWrapShape>
-        </div>
-      </section>
-      <section class="my-7">
         <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Content components</h2>
         <div class="not-prose">
           <ContentProseBlockquote>
