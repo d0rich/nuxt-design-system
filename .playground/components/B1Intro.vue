@@ -4,12 +4,12 @@
       class="absolute inset-0 bg-[url('~/assets/img/bg/d-bw.webp')] bg-cover bg-center z-[2]"
     />
     <DWrapShape
-      class="absolute w-fit top-1/3 left-0 right-0 mx-auto z-[3] dark"
+      class="absolute w-fit top-1/3 left-0 right-0 mx-auto z-[3]"
       shape-class="intro-shape"
     >
       <div
         tag="div"
-        class="p-10 text-xl font-serif text-center [&>p>br]:!m-0"
+        class="p-10 text-xl font-serif text-center text-white"
       >
       <p>Design system inspired by Persona 5 UI</p>
       <p class="italic">Authored by <a href="https://d0rich.me" class="underline">d0rich</a></p>

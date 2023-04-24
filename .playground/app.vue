@@ -5,8 +5,3 @@
   <NuxtPage />
 </template>
 
-<style>
-* {
-  @apply dark:text-white;
-}
-</style>

@@ -22,6 +22,7 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
 <template>
   <main class="">
     <B1Intro />
+    <B2Shapes />
     <div class="prose prose-lg mx-auto">
       <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
       <section class="my-7">
@@ -159,9 +160,3 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
     </div>
   </main>
 </template>
-
-<style>
-* {
-  @apply dark:text-white;
-}
-</style>
