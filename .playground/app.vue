@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { CharacterPose, ActionFanItem, ActionListItem } from '../types'
 
+useColorMode().value = 'light'
+
 const pose = ref<CharacterPose>('action')
 const listItems = ref<ActionListItem<CharacterPose>[]>([
   { title: 'Idle', emit: 'idle' },
@@ -19,7 +21,8 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
   <Head>
     <Title>d0rich • Nuxt design system</Title>
   </Head>
-  <main class="w-full min-h-screen bg-neutral-300 px-3 py-10">
+  <main class="">
+    <B1Intro />
     <div class="prose prose-lg mx-auto">
       <h1 class="sharp-shadow ss-red-500 ss-br-1">d0rich Nuxt design system</h1>
       <section class="my-7">
@@ -157,3 +160,9 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
     </div>
   </main>
 </template>
+
+<style>
+* {
+  @apply dark:text-white;
+}
+</style>
