@@ -9,10 +9,10 @@ export type StatsProps = {
   groupTitle?: string
   titles: string[]
   values: number[]
+  smallPrint: boolean
 }
 
 const props = defineProps<StatsProps>()
-const smallPrintStats = true
 
 const fullStarPoints = ref<number[][]>([
   [500, 0], // 1
@@ -72,7 +72,7 @@ const fifthStat = computed(() => statFromIndex(4))
 
 <template>
   <figure class="max-w-full">
-    <div v-if="!smallPrintStats" class="hidden print:block">
+    <div v-if="!smallPrint" class="hidden print:block">
       <div class="text-lg font-bold">{{ groupTitle }}</div>
       <div>
         <div
