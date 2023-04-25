@@ -1,5 +1,5 @@
 // @ts-ignore
-import consola from 'consola/src/browser'
+import consola from 'consola'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'

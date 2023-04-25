@@ -5,7 +5,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export default defineNuxtConfig({
   build: {
-    transpile: ['gsap', 'consola/src/browser']
+    transpile: ['gsap', 'consola']
   },
   modules: [
     '@nuxtjs/google-fonts',
