@@ -4,19 +4,6 @@ import type { CharacterPose, ActionFanItem, ActionListItem } from '../../types'
 definePageMeta({
   colorMode: 'light'
 })
-
-const pose = ref<CharacterPose>('action')
-const listItems = ref<ActionListItem<CharacterPose>[]>([
-  { title: 'Idle', emit: 'idle' },
-  { title: 'Action', emit: 'action' },
-  { title: 'Profi', emit: 'profi' }
-])
-
-const fanItems = ref<ActionFanItem<CharacterPose>[]>([
-  { title: 'Idle', emit: 'idle' },
-  { title: 'Action', emit: 'action' },
-  { title: 'Profi', emit: 'profi' }
-])
 </script>
 
 <template>
@@ -26,33 +13,8 @@ const fanItems = ref<ActionFanItem<CharacterPose>[]>([
     <B3Shadows />
     <B4SvgLines />
     <B5Buttons />
+    <B6Lists />
     <div class="prose prose-lg mx-auto">
-      <section class="my-7">
-        <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Lists</h2>
-        <div class="grid md:grid-cols-2 not-prose items-center">
-          <DCharacter :pose="pose" no-image />
-          <DActionsList
-            class="text-white"
-            :actions="listItems"
-            @action-focus="pose = $event"
-          />
-        </div>
-        <div class="grid md:grid-cols-3 not-prose items-center">
-          <DActionsFan
-            class="text-white py-48"
-            side="left"
-            :actions="fanItems"
-            @action-focus="pose = $event"
-          />
-          <DCharacter :pose="pose" shape-class="fill-red-500" no-image />
-          <DActionsFan
-            class="text-white py-48"
-            side="right"
-            :actions="fanItems"
-            @action-focus="pose = $event"
-          />
-        </div>
-      </section>
       <section class="my-7">
         <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Animations</h2>
         <div class="grid grid-cols-2 items-center">
