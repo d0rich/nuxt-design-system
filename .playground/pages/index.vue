@@ -14,6 +14,7 @@ definePageMeta({
     <B4SvgLines />
     <B5Buttons />
     <B6Lists />
+    <B7Identica />
     <div class="prose prose-lg mx-auto">
       <section class="my-7">
         <h2 class="sharp-shadow ss-cyan-500 ss-br-1">Animations</h2>
