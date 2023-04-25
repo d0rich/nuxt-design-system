@@ -39,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-slate-700">
+  <div class="bg-slate-700 overflow-hidden">
     <div class="py-20 px-5 max-w-screen-lg mx-auto">
       <h1>Identica</h1>
       <div class="grid md:grid-cols-2 gap-5 items-center">
