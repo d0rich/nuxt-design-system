@@ -4,13 +4,25 @@
       class="absolute inset-0 bg-[url('~/assets/img/bg/d-bw.webp')] bg-cover bg-center z-[2]"
     />
     <DWrapShape
-      class="absolute w-fit top-1/3 left-0 right-0 mx-auto z-[3]"
+      class="absolute flex items-center inset-0 w-fit mx-auto z-[3]"
       shape-class="intro-shape"
     >
-      <div tag="div" class="p-10 text-xl font-serif text-center text-white">
+      <div class="p-10 text-xl font-serif text-center prose prose-invert">
+        <h1>d0rich design system</h1>
         <p>Design system inspired by Persona 5 UI</p>
+        <p>
+          References:
+          <ul>
+            <li>
+              <a href="https://ridwankhan.com/the-ui-and-ux-of-persona-5-183180eb7cce">The UI and UX of Persona 5</a>
+            </li>
+            <li>
+              <a href="https://www.reddit.com/r/Persona5/comments/gmw6hz/persona_5_royal_fonts_if_i_find_more_about_the/">Persona 5 Royal Fonts</a>
+            </li>
+          </ul>
+        </p>
         <p class="italic">
-          Authored by <a href="https://d0rich.me" class="underline">d0rich</a>
+          Authored by <a href="https://d0rich.me">d0rich</a>
         </p>
       </div>
     </DWrapShape>
