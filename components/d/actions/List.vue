@@ -1,10 +1,9 @@
 <script lang="ts">
+import { HighlightVariant } from '../wrap/FocusHighlight.vue'
 export default {
   name: 'DActionsList'
 }
-</script>
 
-<script setup lang="ts">
 export type ActionListItem<TEmit = any> = {
   title: string
   emit?: TEmit
@@ -12,10 +11,13 @@ export type ActionListItem<TEmit = any> = {
     to?: string
     href?: string
     target?: '_blank' | '_self' | '_parent' | '_top' | string
+    highlightVariant?: HighlightVariant
     [k: string]: any
   }
 }
+</script>
 
+<script setup lang="ts">
 defineEmits(['actionFocus', 'actionUnfocus', 'actionChoose'])
 
 defineProps({
@@ -28,6 +30,11 @@ defineProps({
     default: ''
   }
 })
+
+function getCurrentHighlightVariant(action: ActionListItem): HighlightVariant {
+  if (action.attrs?.highlightVariant) return action.attrs.highlightVariant
+  return 'negative-list-item'
+}
 </script>
 
 <template>
@@ -37,30 +44,36 @@ defineProps({
       clipPath: 'polygon(10px 0, 0 100%, 100% calc(100% - 10px), 100% 13px)'
     }"
   >
-    <TransitionGroup
-      name="actions"
-      tag="ul"
-      class="p-7 relative [&_button]:font-sans [&_button]:font-bold [&_button]:text-left font-sans font-bold"
-      :class="listClass"
-    >
-      <li v-for="action in actions" :key="action.title">
-        <DWrapFocusHighlight
-          v-bind="action.attrs"
-          tag="button"
-          variant="negative-list-item"
-          no-passive-hl
-          @click="$emit('actionChoose', action.emit)"
-          @mouseenter="$emit('actionFocus', action.emit)"
-          @touchstart="$emit('actionFocus', action.emit)"
-          @focusin="$emit('actionFocus', action.emit)"
-          @mouseleave="$emit('actionUnfocus', action.emit)"
-          @touchend="$emit('actionUnfocus', action.emit)"
-          @focusout="$emit('actionUnfocus', action.emit)"
-        >
-          {{ action.title }}
-        </DWrapFocusHighlight>
-      </li>
-    </TransitionGroup>
+    <div class="p-7">
+      <div class="mb-4 font-serif text-lg">
+        <slot name="header" />
+      </div>
+
+      <TransitionGroup
+        name="actions"
+        tag="ul"
+        class="relative [&_button]:font-sans [&_button]:font-bold [&_button]:text-left font-sans font-bold"
+        :class="listClass"
+      >
+        <li v-for="action in actions" :key="action.title">
+          <DWrapFocusHighlight
+            v-bind="action.attrs"
+            tag="button"
+            :variant="getCurrentHighlightVariant(action)"
+            no-passive-link
+            @click="$emit('actionChoose', action.emit)"
+            @mouseenter="$emit('actionFocus', action.emit)"
+            @touchstart="$emit('actionFocus', action.emit)"
+            @focusin="$emit('actionFocus', action.emit)"
+            @mouseleave="$emit('actionUnfocus', action.emit)"
+            @touchend="$emit('actionUnfocus', action.emit)"
+            @focusout="$emit('actionUnfocus', action.emit)"
+          >
+            {{ action.title }}
+          </DWrapFocusHighlight>
+        </li>
+      </TransitionGroup>
+    </div>
   </DWrapShape>
 </template>
 

@@ -9,20 +9,29 @@ defineProps({
   mode: {
     type: String as () => 'default' | 'homepage-story' | 'homepage-skills',
     default: 'default'
-  }
+  },
+  dense: Boolean
 })
 </script>
 
 <template>
   <DWrapShape
-    shape-class="card__bg"
+    :shape-class="{
+      card__bg: !dense,
+      'card__bg--dense': dense
+    }"
     :class="{
       'card--homepage-story force-light': mode === 'homepage-story',
       'card--homepage-skills force-light': mode === 'homepage-skills',
       card: mode === 'default'
     }"
   >
-    <div class="card__content">
+    <div
+      :class="{
+        card__content: !dense,
+        'card__content--dense': dense
+      }"
+    >
       <slot />
     </div>
   </DWrapShape>
@@ -45,9 +54,17 @@ defineProps({
 </style>
 
 <style>
+.card__content,
+.card__content--dense {
+  @apply md:text-lg print:p-0;
+}
+
 .card__content {
   padding: var(--shape-card-padding);
-  @apply md:text-lg print:p-0;
+}
+
+.card__content--dense {
+  padding: var(--shape-card--dense__padding);
 }
 
 .card--homepage-story .card__content,
@@ -55,24 +72,30 @@ defineProps({
   @apply text-black;
 }
 
-.force-light .card__bg {
-  @apply dark:bg-white;
+.force-light :is(.card__bg, .card__bg--dense) {
+  @apply !bg-white dark:bg-white;
 }
 
-.card--homepage-story .card__bg {
+.card--homepage-story :is(.card__bg, .card__bg--dense) {
   background: var(--d-card-x-ray--idle__color);
-  clip-path: var(--shape-card);
 }
 
-.card--homepage-skills .card__bg {
+.card--homepage-skills :is(.card__bg, .card__bg--dense) {
   background: var(--d-card-x-ray--action__color);
-  clip-path: var(--shape-card);
+}
+
+.card__bg,
+.card__bg--dense {
+  @apply bg-white dark:bg-neutral-700
+        print:bg-none;
 }
 
 .card__bg {
   clip-path: var(--shape-card);
-  @apply bg-white dark:bg-neutral-700
-        print:bg-none;
+}
+
+.card__bg--dense {
+  clip-path: var(--shape-card--dense);
 }
 
 @media print {

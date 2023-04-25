@@ -22,7 +22,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   actions: {
     type: Array as () => ActionFanItem[],
     default: () => []
@@ -47,17 +47,20 @@ const shapeStyles: Record<string, CSSProperties> = {
     clipPath: 'polygon(calc(100% - 10px) 0, 100% 100%, 0 40%)'
   }
 }
-const actions = ref<ActionFanItem[]>([])
-onMounted(() => {
-  actions.value = props.actions.filter(() => true)
-})
-onBeforeUnmount(() => {
-  actions.value = props.actions.filter(() => false)
-})
 </script>
 
 <template>
-  <TransitionGroup name="actions" tag="ul" class="py-8">
+  <!-- TODO: Use trigonometric functions to calculate size -->
+  <TransitionGroup
+    name="actions"
+    tag="ul"
+    :style="{
+      padding: `${Math.min(actions.length * 2, 15)}rem 0 ${Math.min(
+        actions.length * 3,
+        15
+      )}rem`
+    }"
+  >
     <DWrapShape
       v-for="(action, index) in actions"
       :key="action.title"
@@ -93,7 +96,7 @@ onBeforeUnmount(() => {
         <DBtn
           v-bind="action.attrs"
           tag="button"
-          no-passive-hl
+          no-passive-highlight
           @click="$emit('actionChoose', action.emit)"
           @mouseenter="$emit('actionFocus', action.emit)"
           @touchstart="$emit('actionFocus', action.emit)"
