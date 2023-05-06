@@ -56,15 +56,17 @@ defineProps({
 <style>
 .card__content,
 .card__content--dense {
-  @apply md:text-lg print:p-0;
+  @apply md:text-lg;
 }
 
 .card__content {
   padding: var(--shape-card-padding);
+  @apply print:p-0;
 }
 
 .card__content--dense {
   padding: var(--shape-card--dense__padding);
+  @apply print:p-0;
 }
 
 .card--homepage-story .card__content,
