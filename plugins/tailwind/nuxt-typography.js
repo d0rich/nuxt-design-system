@@ -5,10 +5,10 @@ const plugin = require('tailwindcss/plugin')
 module.exports = plugin(function ({ addUtilities, theme }) {
   addUtilities({
     '.nuxt-typography-connector': {
-      '--typography-font-sans': theme('fontFamily.sans'),
-      '--typography-font-serif': theme('fontFamily.serif'),
-      '--typography-font-mono': theme('fontFamily.mono'),
-      '--typography-font-dialog': theme('fontFamily.dialog')
+      '--tw-typography-font-sans': theme('fontFamily.sans'),
+      '--tw-typography-font-serif': theme('fontFamily.serif'),
+      '--tw-typography-font-mono': theme('fontFamily.mono'),
+      '--tw-typography-font-dialog': theme('fontFamily.dialog')
     }
   })
 })
