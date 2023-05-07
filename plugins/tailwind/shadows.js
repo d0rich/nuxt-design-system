@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/** @type {import('tailwindcss/plugin')} */
 const plugin = require('tailwindcss/plugin')
+/** @type {import('tailwindcss/colors')} */
 const colors = require('tailwindcss/colors')
 
 const X_OFFSET_VAR = '--tw-ss-x-offset'
