@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('./plugins/tailwind/shadows')
+    require('./plugins/tailwind/shadows'),
+    require('./plugins/tailwind/nuxt-typography')
   ]
 }
