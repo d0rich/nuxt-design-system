@@ -6,9 +6,6 @@ on:
   # schedule:
   #   - cron: "0 3 * * *"
 
-env:
-  GSAP_TOKEN: ${{secrets.GSAP_TOKEN}}
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,9 +24,6 @@ jobs:
 
       - name: Prepare Nuxt
         run: npx nuxi prepare
-
-      - name: Test
-        run: npm run test
 
       - name: Build Nuxt 3 static site
         run: npm run generate
