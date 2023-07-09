@@ -1,5 +1,6 @@
 <script lang="ts">
-import gsap from 'gsap'
+// @ts-ignore
+import { interpolate } from 'flubber'
 
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
@@ -36,6 +37,8 @@ const props = defineProps({
     default: () => 'fill-white'
   }
 })
+
+const IS_LOW_PERFORMANCE = isLowPerformanceDevice()
 
 const assets = {
   idle,
@@ -87,15 +90,40 @@ watch(
       action: shapeAction.value?.$el,
       profi: shapeProfi.value?.$el
     }
-    // TODO: Replace with flubber
-    if (false) {
-      gsap.fromTo(
-        shapeToAnimate.value?.$el,
-        { morphSVG: poseShapeMap[oldPose] },
-        { morphSVG: poseShapeMap[newPose], duration: 0.2 }
-      )
-    } else {
+    if (IS_LOW_PERFORMANCE) {
       useHref.value = `#${newPose}-shape`
+      return
+    }
+    const interpolator = interpolate(
+      poseShapeMap[oldPose]?.getAttribute('d') ?? '',
+      poseShapeMap[newPose]?.getAttribute('d') ?? '',
+      { maxSegmentLength: 100 }
+    )
+    console.log(interpolator)
+
+    const howFarAlongTheAnimationIsOnAScaleOfZeroToOne =
+      createTimeInterpolator(150)
+
+    requestAnimationFrame(draw)
+
+    function draw(time: number) {
+      const t = howFarAlongTheAnimationIsOnAScaleOfZeroToOne(time)
+      shapeToAnimate.value?.$el?.setAttribute('d', interpolator(t))
+      if (t < 1) {
+        requestAnimationFrame(draw)
+      }
+    }
+
+    function createTimeInterpolator(
+      duration: number,
+      easing: (t: number) => number = (t) => t
+    ) {
+      const start = performance.now()
+      return (time: number) => {
+        const elapsed = time - start
+        const t = elapsed / duration
+        return t > 1 ? 1 : easing(t)
+      }
     }
   }
 )
@@ -112,11 +140,13 @@ watch(
         </defs>
         <g v-if="!noShape">
           <component
+            v-show="!IS_LOW_PERFORMANCE"
             :is="initialSvgPath"
             ref="shapeToAnimate"
             :class="shapeClass"
           />
           <use
+            v-show="IS_LOW_PERFORMANCE"
             :class="shapeClass"
             :href="useHref"
           />
