@@ -87,7 +87,8 @@ watch(
       action: shapeAction.value?.$el,
       profi: shapeProfi.value?.$el
     }
-    if (isMorphSVGPluginInstalled()) {
+    // TODO: Replace with flubber
+    if (false) {
       gsap.fromTo(
         shapeToAnimate.value?.$el,
         { morphSVG: poseShapeMap[oldPose] },
@@ -112,12 +113,10 @@ watch(
         <g v-if="!noShape">
           <component
             :is="initialSvgPath"
-            v-show="isMorphSVGPluginInstalled()"
             ref="shapeToAnimate"
             :class="shapeClass"
           />
           <use
-            v-show="!isMorphSVGPluginInstalled()"
             :class="shapeClass"
             :href="useHref"
           />
