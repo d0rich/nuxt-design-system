@@ -94,15 +94,16 @@ watch(
       useHref.value = `#${newPose}-shape`
       return
     }
-    const interpolator = interpolate(
-      poseShapeMap[oldPose]?.getAttribute('d') ?? '',
-      poseShapeMap[newPose]?.getAttribute('d') ?? '',
-      { maxSegmentLength: 100 }
-    )
-    console.log(interpolator)
+    const interpolator = useCache(`character:morph:${oldPose}-${newPose}`, () => {
+      return interpolate(
+        poseShapeMap[oldPose]?.getAttribute('d') ?? '',
+        poseShapeMap[newPose]?.getAttribute('d') ?? '',
+        { maxSegmentLength: 30 }
+      )
+    })
 
     const howFarAlongTheAnimationIsOnAScaleOfZeroToOne =
-      createTimeInterpolator(150)
+      createTimeInterpolator(200)
 
     requestAnimationFrame(draw)
 
