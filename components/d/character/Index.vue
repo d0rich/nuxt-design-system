@@ -1,6 +1,4 @@
 <script lang="ts">
-import gsap from 'gsap'
-
 import idle from '../../../assets/img/character/idle.webp'
 import idleColor from '../../../assets/img/character/idle-color.webp'
 import idleOutline from '../../../assets/img/character/idle-outline.webp'
@@ -13,6 +11,7 @@ import profi from '../../../assets/img/character/profi.webp'
 import profiColor from '../../../assets/img/character/profi-color.webp'
 import profiOutline from '../../../assets/img/character/profi-outline.webp'
 import profiOutlineColor from '../../../assets/img/character/profi-outline-color.webp'
+import type { CSSProperties } from 'vue'
 
 export type CharacterPose = 'idle' | 'action' | 'profi'
 
@@ -58,44 +57,19 @@ function getAsset(pose: CharacterPose) {
   ]
 }
 
-let initialSvgPath: ReturnType<typeof resolveComponent>
 const useHref = ref(`#${props.pose}-shape`)
-
-switch (props.pose) {
-  case 'idle':
-    initialSvgPath = resolveComponent('DCharacterShapeIdle')
-    break
-  case 'profi':
-    initialSvgPath = resolveComponent('DCharacterShapeProfi')
-    break
-  case 'action':
-    initialSvgPath = resolveComponent('DCharacterShapeAction')
-    break
-}
-
-const shapeToAnimate = ref<ComponentPublicInstance | null>(null)
-const shapeIdle = ref<ComponentPublicInstance | null>(null)
-const shapeAction = ref<ComponentPublicInstance | null>(null)
-const shapeProfi = ref<ComponentPublicInstance | null>(null)
+const useStyle = reactive<CSSProperties>({})
 
 watch(
   () => props.pose,
-  (newPose, oldPose) => {
+  async (newPose, oldPose) => {
     if (props.noShape) return
-    const poseShapeMap: Record<CharacterPose, SVGPathElement> = {
-      idle: shapeIdle.value?.$el,
-      action: shapeAction.value?.$el,
-      profi: shapeProfi.value?.$el
-    }
-    if (isMorphSVGPluginInstalled()) {
-      gsap.fromTo(
-        shapeToAnimate.value?.$el,
-        { morphSVG: poseShapeMap[oldPose] },
-        { morphSVG: poseShapeMap[newPose], duration: 0.2 }
-      )
-    } else {
-      useHref.value = `#${newPose}-shape`
-    }
+    useStyle.transform = 'scale(0.5)'
+    useStyle.filter = 'blur(10px)'
+    await new Promise(resolve => setTimeout(resolve, 150))
+    useHref.value = `#${newPose}-shape`
+    useStyle.transform = undefined
+    useStyle.filter = undefined
   }
 )
 </script>
@@ -105,21 +79,17 @@ watch(
     <div class="relative isolate w-full h-full">
       <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
         <defs v-if="!noShape">
-          <DCharacterShapeIdle id="idle-shape" ref="shapeIdle" />
-          <DCharacterShapeAction id="action-shape" ref="shapeAction" />
-          <DCharacterShapeProfi id="profi-shape" ref="shapeProfi" />
+          <DCharacterShapeIdle id="idle-shape" />
+          <DCharacterShapeAction id="action-shape" />
+          <DCharacterShapeProfi id="profi-shape" />
         </defs>
         <g v-if="!noShape">
-          <component
-            :is="initialSvgPath"
-            v-show="isMorphSVGPluginInstalled()"
-            ref="shapeToAnimate"
-            :class="shapeClass"
-          />
           <use
-            v-show="!isMorphSVGPluginInstalled()"
+            class="transition-all"
+            :style="useStyle"
             :class="shapeClass"
             :href="useHref"
+            transform-origin="512 512"
           />
         </g>
       </svg>

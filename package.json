@@ -1,6 +1,6 @@
 {
   "name": "@d0rich/nuxt-design-system",
-  "version": "0.7.5",
+  "version": "0.8.0",
   "main": "./nuxt.config.ts",
   "description": "🖼️ Design system for d0rich's projects based on Nuxt 3 and Tailwind CSS",
   "keywords": [
@@ -56,13 +56,7 @@
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@nuxtjs/tailwindcss": "^6.6.0",
     "@tailwindcss/typography": "^0.5.8",
-    "nuxt-icon": "^0.4.0",
-    "gsap": "^3.11.5"
-  },
-  "optionalDependencies": {
-    "gsap": "^3.11.5"
-  },
-  "peerDependencies": {
-    "gsap": "^3.11.5"
+    "gsap": "^3.12.2",
+    "nuxt-icon": "^0.4.0"
   }
 }
