@@ -1,3 +1,5 @@
+> This project is moved to the monorepo: https://github.com/d0rich/esprit
+
 # @d0rich/nuxt-design-system
 
 This is a nuxt 3 layer containing a design system for the [d0rich](https://github.com/d0rich) projects. It is based on [TailwindCSS](https://tailwindcss.com/) and tries to recreate Persona 5 UI like style.
